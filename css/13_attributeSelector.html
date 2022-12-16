@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 선택자</title>
+    <style>
+      a[target] {
+        /*특정 속성이 있는 것만 선택*/
+        font-weight: bold;
+        font-size: 50px;
+      }
+
+      a[class~="flat"] {
+        /*a태그의 class 속성 값중에 flat단어가 포함되어 있는*/
+        box-shadow: 5px 5px rgba(0, 0, 0, 0.4);
+        /*box-shadow 그림자 넣어줌*/
+      }
+
+      a[class^="bu"] {
+        /*a 태그의 class 속성의 값이 bu로 시작하는*/
+        color: yellow;
+      }
+
+      a[class$="ry"] {
+        /*a 태그의 class 속성의 값이 ry로 끝나는*/
+        text-decoration: none; /*밑줄 표현 안함*/
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web Front 기술</h1>
+    <ul class="firstUl">
+      <li><a href="https://namu.wiki/w/HTML" class="flat">html</a></li>
+      <li>
+        <a href="https://namu.wiki/w/CSS" target="_blank" class="flat">css</a>
+      </li>
+      <!--target="_blank" : 새탭으로 열림-->
+      <li>
+        <a href="https://namu.wiki/w/JavaScript" class="very">javascript</a>
+      </li>
+      <li><a href="https://namu.wiki/w/JavaScript">jQuery</a></li>
+      <li><a href="https://namu.wiki/w/JavaScript" class="button">Ajax</a></li>
+    </ul>
+  </body>
+</html>

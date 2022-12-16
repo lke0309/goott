@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>목록태그를 이용한 세로 메뉴 만들기</title>
+    <style>
+      nav {
+        width: 300px; /*세로는 지정 안했으니까 컨텐츠 양에 따라 늘어남.*/
+        margin: 50px 30px; /*위에 50 양옆에 30 px씩 줌*/
+      }
+      ul {
+        /*블릿 안나오게함*/
+        list-style-type: none;
+      }
+      li {
+        border: 1px solid #222;
+        /* 테두리 */
+        padding: 20px 40px;
+        /* 테두리 안에 공간 */
+        margin: 5px;
+        /* 테두리 밖에 공간 */
+      }
+      a {
+        text-decoration: none;
+        /* 글자아래 선 */
+        color: #000;
+        /* 글자의 색상 */
+      }
+      /* li { 블럭 요소로 바꾸는 태그
+        display: block;
+      } */
+      li:hover {
+        /* hover: 마우스를 대면 */
+        background-color: yellow;
+        /* 각 li의 백그라운드 컬러 */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <!--메뉴바-->
+      <ul>
+        <li><a href="#">짜장면</a></li>
+        <li><a href="#">짬뽕</a></li>
+        <li><a href="#">볶음밥</a></li>
+        <li><a href="#">마파두부</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

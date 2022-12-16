@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수와 상수</title>
+    <script>
+      //변수
+      let name; // name이라는 변수를 선언.
+      console.log(name); // undefined: 변수에 값이 대입되지 않은 상태
+
+      name = "둘리"; //"둘리"라는 문자열을 name이라는 변수에 대입(할당)
+      console.log(name);
+
+      name = "도우너";
+      console.log(name);
+
+      //  let name = "마이콜";  //name이라는 변수가 11번 라인에서 이미 만들어져있기 때문에 재 선언 불가
+      //   console.log(name);
+
+      //var키워드의 문제점1.
+      var number = 5;
+      console.log(number);
+
+      var number = 3; //재 선언이 된다. 협업을 필요로 하는 대형 프로젝트에서는 변수를 재선언 되면 위험이 따르므로 사용하지 않는 것을 추천
+      console.log(number);
+
+      //상수
+      const HERO = "아이언맨"; //상수를 선언하면서 초기값을 대입할 수는 있으나,
+      console.log(HERO);
+
+      //hero="스파이더맨"; 상수에 있는 값을 변경 할 수 없다.
+      //   hero = "스파이더맨";
+      //   console.log(hero);
+    </script>
+  </head>
+  <body></body>
+</html>

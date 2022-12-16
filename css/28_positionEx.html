@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>position 속성</title>
+    <style>
+      p {
+        width: 200px;
+        height: 200px;
+      }
+      #static {
+        position: static;
+        top: 500px;
+        /* positon : static을 사용하면 top, left, right, bottom 무시 */
+        background-color: yellow;
+      }
+      #relative-1 {
+        position: relative;
+        /* position속성을 relative로 사용하더라도 top, left, right, bottom 값을 적용하지 않으면 원해 출력죄는 곳 자리에 출력된다. */
+        /* top: 100px;
+        left: 500px; */
+        background-color: blue;
+      }
+      #relative-2 {
+        position: relative;
+        /* position속성을 relative로 사용하더라도 top, left, right, bottom 값을 적용하지 않으면 원해 출력죄는 곳 자리에 출력된다. */
+        top: 100px;
+        left: 500px;
+        background-color: palevioletred;
+      }
+      #fixed {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="static">position : static</p>
+    <p id="relative-1">position: relative</p>
+    <p id="relative-2">position: relative</p>
+    <div id="fixed">
+      <a href="#static"><img src="img/top.png" width="50px" /></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래밍 연습1</title>
+    <script>
+      // 문1) 가로가 3cm, 높이가6cm인 직사각형의 넓이를 구해 출력하는 프로그램을 만드세요.
+      //1) 가로값과 세로 값을 저장(변수에 저장)
+      let width = 3,
+        height = 6,
+        area = 0;
+      console.log(width, height, area);
+      //2) 넓이= 가로 * 세로 공식을 이용하여 결과를 구하고 넓이 값도 저장
+      area = width * height;
+      //3) 화면에 넓이 값을 출력
+      document.write("<div>" + area + "cm<sup>2</sup></div>");
+
+      //문2) 반지름이 5cm인 원의 원넓이를 구하고 출력하세요.
+      //반지름 * 3.14
+
+      let radius = 5,
+        area2 = 0,
+        pi = 3.1415926535;
+      area2 = radius * radius * Math.PI;
+
+      document.write("<div>" + area2 + "cm<sup>2</sup></div>");
+
+      //문3) num1이라는 변수에 3이 대입되어 있고 num2라는 변수에 5라는 값이 있는데,
+      //두변수의 값을 바꾸어 저장하도록하고, 출력하세요
+
+      let num1 = 3;
+      let num2 = 5;
+      let temp = 0;
+
+      temp = num1;
+      num1 = num2;
+      num2 = temp;
+
+      document.write("<div>" + num1 + "</div>");
+      document.write("<div>" + num2 + "</div>");
+
+      //문4) 밑변과 높이를 유저에게 입력 받아, 삼각형의 넓이를 구해 출력하는 프로그램을 만드세요
+      //삼각형의 넓이= 밑변 * 높이 /2;
+
+      let t_area = 0,
+        t_base = 0,
+        t_height = 0;
+
+      t_base = Number(window.prompt("밑변을 입력하세요: ", "0")); //유저에게 입력 받는 함수
+      t_height = window.prompt("높이를 입력하세요: ", "0"); //유저에게 입력 받는 함수
+
+      t_area = (t_base * t_height) / 2;
+      document.write("삼각형 넓이: " + t_area + "cm<sup>2</sup></div>");
+    </script>
+  </head>
+  <body></body>
+</html>

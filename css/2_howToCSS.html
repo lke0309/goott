@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS를 기술하는 3가지 방법</title>
+    <link rel="stylesheet" href="outCSS.css" />
+    <!--외부 css 적용하기 위해-->
+    <style>
+      /* head 태그 안에 style태그 안에 기술하는 법: 문서 전체 적용되는 스타일을 사용 */
+      h1 {
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: antiquewhite; font-weight: bold">inline CSS법</h1>
+    <h1>이 태그는 위의 스타일이 적용이 안됩니다.</h1>
+
+    <p>외부 스타일 파일 적용 가능</p>
+  </body>
+</html>

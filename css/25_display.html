@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>display 속성</title>
+    <style>
+      ul {
+        list-style-type: none;
+        background-color: #333;
+      }
+      ul li {
+        display: inline-block;
+        /* 인라인은 패딩과 마진값을 넣을 수 없다, 인라인 처럼 옆에 넣으면서 패딩과 마진을 사용하려면 inline-block를 넣는다. 
+        대신 block요소는 안된다.*/
+        padding: 20px;
+      }
+      li a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: black;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      li:hover a {
+        color: #fff;
+        background-color: rgb(37, 134, 66);
+      }
+
+      #big {
+        display: none;
+      }
+    </style>
+    <script>
+      function sizeUp() {
+        document.getElementById("big").style.display = "block";
+        //document(이 파일에서) id가 big인 태그를 디스플레이 속성을 block로 바꿔라
+      }
+
+      function sizeDown() {
+        document.getElementById("big").style.display = "none";
+        // .은 객체의 속성에 접근하는 연산자 이다
+      }
+    </script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <!-- #은 이문서를 가르킴 -->
+        <li><a href="#">menu1</a></li>
+        <li><a href="#">menu2</a></li>
+        <li><a href="#">menu3</a></li>
+        <li><a href="#">menu4</a></li>
+      </ul>
+    </nav>
+
+    <div class="small">
+      <img
+        src="img/christmas.jpg"
+        width="100px"
+        onmouseover="sizeUp();"
+        onmouseout="sizeDown();"
+      />
+      <!-- onmouseover 마우스를 올리면 | onmouseout 마우스를 내리면 -->
+    </div>
+    <div id="big">
+      <img src="img/christmas.jpg" />
+    </div>
+  </body>
+</html>

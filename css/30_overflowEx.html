@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>overflow</title>
+    <style>
+      div.overflow {
+        width: 100px;
+        height: 200px;
+        background-color: blueviolet;
+        overflow: auto;
+      }
+
+      div.ellipse {
+        width: 100px;
+        height: 200px;
+        overflow: hidden;
+        /* 넓이가 100px이 넘는 내용을 보이지 않게처리 */
+        text-overflow: ellipsis;
+        /* 넓이가 100px을 넘을 경우 생략부호(...)을 표시한다. */
+        white-space: nowrap;
+        /* 공백문자가 있는 경우 줄 바꿈 하지 않고 한줄로 나오게 처리 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overflow">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.
+    </div>
+    <div class="ellipse">
+      <!-- ellipse는 블럭 레벨 태그에서만 적용됨 -->
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.
+    </div>
+  </body>
+</html>

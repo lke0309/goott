@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 태그</title>
+  </head>
+  <body>
+    <h4>3행 4열짜리 표를 만들어 봅시다</h4>
+    <table border="1">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+    </table>
+    <h4>2행 3열짜리 표를 만들어 봅시다</h4>
+    <table border="1">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+    </table>
+    <h4>테이블 셀의 병합</h4>
+    <!--가로로 병합할 땐 colspan="합쳐질 컬럼 수", 세로로 병합할때는 , rowspan="합쳐질 행의 수"를 td 속성에 기입한다.-->
+    <table border="1">
+      <tr>
+        <td colspan="2">1</td>
+        <!-- <td>2</td> -->
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td rowspan="2">8</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <!-- <td>12</td> -->
+      </tr>
+    </table>
+    <h4>표</h4>
+    <table border="1">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td colspan="2">3</td>
+        <!-- <td>4</td> -->
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td rowspan="3">2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <!-- <td>2</td> -->
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <!-- <td>2</td> -->
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td colspan="3">2</td>
+        <!-- <td>3</td> -->
+        <!-- <td>4</td> -->
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+    </table>
+
+    <h4>주소록 만들기</h4>
+    <table border="1">
+      <caption>
+        주소록
+      </caption>
+      <thead>
+        <th>이름</th>
+        <th>전화번호</th>
+        <th>주소</th>
+        <th>사진</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>라떼</td>
+          <td>010-1111-2222</td>
+          <td>카페</td>
+          <td><img src="latte.jpg" /></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>연예인 프로필 만들기</h4>
+    <table border="1">
+      <caption>
+        공유
+      </caption>
+      <thead>
+        <th>다른이름</th>
+        <th>소속사</th>
+        <th>신체</th>
+        <th>데뷔</th>
+        <th>사이트</th>
+        <th>사진</th>
+      </thead>
+      <tbody>
+        <td>공지철</td>
+        <td>매니지먼트 숲</td>
+        <td>184cm</td>
+        <td>2001년 KBS드라마 '학교 4'</td>
+        <td>
+          <a
+            href="http://www.msoopent.com/page/page.html?acode=S67307161&mcd=02"
+            >공식홈페이지</a
+          >
+        </td>
+        <td>
+          <img src="gong.jpg" alt="" />
+        </td>
+      </tbody>
+    </table>
+
+    <h4>연예인 프로필 만들기2</h4>
+
+    <table>
+      <caption>
+        <b> 영화배우 </b>
+      </caption>
+      <tr>
+        <td>이름</td>
+        <td>공유</td>
+        <td rowspan="4"><img src="gong.jpg" alt="" /></td>
+      </tr>
+      <tr>
+        <td>소속사</td>
+        <td>매니지먼트 숲</td>
+      </tr>
+      <tr>
+        <td>신체</td>
+        <td>184cm</td>
+      </tr>
+      <tr>
+        <td>사이트</td>
+        <td>
+          <a
+            href="http://www.msoopent.com/page/page.html?acode=S67307161&mcd=02"
+            >공식홈페이지</a
+          >
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

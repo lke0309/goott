@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>의사(가상) 클래스</title>
+    <style>
+      li:hover {
+        /*li에 마우스를 올리면*/
+        background-color: yellow;
+      }
+      a:visited {
+        /* : 콜론 하나면 특정 기능을 나타냄*/
+        /* 방문했던 페이지의 글자색을 빨간 색으로 표현*/
+        color: #ff0000;
+      }
+      h1::first-letter {
+        /* :: 콜론 두개면 상태 위치*/
+        /*h1태그의 첫 글자 하나*/
+        font-size: 40px;
+      }
+      .firstUl li:nth-child(odd) {
+        /*even짝수번째 odd 홀수번째*/
+        border: 1px dotted blue;
+      }
+      input:checked + label {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web Front 기술</h1>
+    <ul class="firstUl">
+      <li><a href="https://namu.wiki/w/HTML">html</a></li>
+      <li><a href="https://namu.wiki/w/CSS">css</a></li>
+      <li><a href="https://namu.wiki/w/JavaScript">javascript</a></li>
+      <li><a href="https://namu.wiki/w/JavaScript">jQuery</a></li>
+      <li><a href="https://namu.wiki/w/JavaScript">Ajax</a></li>
+    </ul>
+
+    <ul>
+      <li>
+        <input type="radio" name="room" id="basic" checked />
+        <label for="basic">가족형(최대2인)</label>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <input type="radio" name="room" id="family" />
+        <label for="family">가족형(최대8인)</label>
+      </li>
+    </ul>
+  </body>
+</html>

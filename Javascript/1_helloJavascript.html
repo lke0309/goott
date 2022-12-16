@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트에서 화면에 출력하는 4가지 방법</title>
+  </head>
+  <body>
+    <div>1.document.write()를 이용한다.</div>
+    <!-- 내가 원하는 자리에 출력하기 어렵기 때문에 4번 방법을 주로 사용한다. -->
+    <script>
+      //script 태그 사이에 자바스크립트 문법을 사용하여 프로그래밍 할 수 있다.
+      document.write("<h1>hello. JavaScript! 너 참 반갑다</h1>");
+      // document=객체, 현재 문서 / write() = write 함수
+      // document.write = 웹문서의 바디 영역에 있는 것을 출력할 수 있음.
+      window.alert(name); //name 변수의 값을 body에 출력
+      // window=현재 웹브라우저
+    </script>
+
+    <div>2.window.alert()을 이용한다.</div>
+    <script>
+      let name = "홍길동"; //name 이라는 변수를 만들고, name이라는 변수에 "홍길동" 이라는 문자열을 저장
+      window.alert(name); //name 이라는 값을 alert창에 출력해라( alert는 긴급메세지 창이기 때문에 어디에 써있든 먼저 출력됨.)(주로 debug용이나 사용자 오류를 출력할 때 오류를 씀.)
+    </script>
+
+    <div>3.consle.log()를 이용한다. -디버깅(오류잡기 위한)용</div>
+    <script>
+      console.log(name);
+    </script>
+
+    <div>4. 태그에 접근하여 출력한다.</div>
+    <h5 id="yogi"></h5>
+    <script>
+      document.getElementById("yogi").innerHTML = name; //현재문서에서 id 값이 yogi인 태그의 innerHTML(태그 안에다가 ~ 라고 생각하면 쉬움.) 속성에 접근하여 name값을 대입
+    </script>
+  </body>
+</html>

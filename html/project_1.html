@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      input,
+      select {
+        border: hidden;
+        text-align: center;
+        width: 90%;
+      }
+      h2 {
+        margin: 5%;
+      }
+      body {
+        text-align: center;
+      }
+      h4 {
+        text-align: left;
+      }
+      td {
+        /* font-weight: blod; */
+        border: 1px solid black;
+      }
+      table {
+        width: 100%;
+        border-spacing: 0;
+      }
+      button {
+        margin: 4%;
+      }
+      .bg {
+        background-color: rgb(212, 217, 223);
+      }
+      #address {
+        width: 100%;
+      }
+      .num {
+        width: 10%;
+      }
+      .title {
+        width: 25%;
+      }
+      .short {
+        width: 40%;
+      }
+    </style>
+    <title>이력서</title>
+  </head>
+
+  <body>
+    <form>
+      <h2>이력서</h2>
+      <h4>1. 인적사항</h4>
+      <table border="1">
+        <tr>
+          <td class="bg">성명(한글)</td>
+          <td>
+            <input
+              type="text"
+              name="userName"
+              placeholder="이름을 입력하세요..."
+            />
+          </td>
+          <td class="bg">성명(영문)</td>
+          <td>
+            <input
+              type="text"
+              name="EnuserName"
+              placeholder="영문 이름을 입력하세요..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="bg">생년월일</td>
+          <td>
+            <input type="date" name="birth" />
+          </td>
+          <td class="bg">성별</td>
+          <td>
+            <input type="radio" name="gender" value="female" />여성
+            <input type="radio" name="gender" value="male" />남성
+          </td>
+        </tr>
+        <tr>
+          <td class="bg">병역사항</td>
+          <td>
+            <select name="armyDuty">
+              <option value="군필">군필</option>
+              <option value="미필">미필</option>
+              <option value="면제">면제</option>
+            </select>
+          </td>
+          <td class="bg">보훈 대상 여부</td>
+          <td>
+            <select name="contributor">
+              <option value="X">X</option>
+              <option value="O">O</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="bg">현주소</td>
+          <td colspan="3">
+            <input id="address" type="text" name="address" placeholder="" />
+          </td>
+          <!-- <td>15</td> -->
+          <!-- <td>16</td> -->
+        </tr>
+        <tr>
+          <td class="bg">연락처</td>
+          <td>
+            010 -
+            <input class="num" type="text" name="phone" placeholder="0000" />
+            -
+            <input class="num" type="text" name="phone" placeholder="0000" />
+          </td>
+          <td class="bg">E-Mail</td>
+          <td><input type="email" name="userEmail" /></td>
+        </tr>
+      </table>
+      <h4>2. 학력사항</h4>
+      <table border="1">
+        <tr>
+          <td class="bg">기간 (년, 월)</td>
+          <td class="bg">학교명 (학위)</td>
+          <td class="bg">전공학과</td>
+          <td class="bg">학점 / 만점</td>
+          <td class="bg">소재지</td>
+        </tr>
+        <tr>
+          <td>
+            <input class="short" type="date" name="degree1" value="start day" />
+            ~
+            <input class="short" type="date" name="degree1" value="last day" />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input class="short" type="date" name="degree2" value="start day" />
+            ~
+            <input class="short" type="date" name="degree2" value="last day" />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input class="short" type="date" name="degree3" value="start day" />
+            ~
+            <input class="short" type="date" name="degree3" value="last day" />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input class="short" type="date" name="degree4" value="start day" />
+            ~
+            <input class="short" type="date" name="degree4" value="last day" />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+      </table>
+      <h4>3. 자격증 및 교육사항</h4>
+      <table border="1">
+        <tr>
+          <td rowspan="4" class="bg">자격 / 면허</td>
+          <td class="bg">취득일자 (년, 월)</td>
+          <td class="bg">자격 및 교육명</td>
+          <td class="bg">발급기관</td>
+          <td class="bg">점수 / 등급</td>
+        </tr>
+        <tr>
+          <!-- <td>6</td> -->
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <!-- <td>11</td> -->
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <!-- <td>16</td> -->
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td rowspan="3" class="bg">외국어 공인시험</td>
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <!-- <td>26</td> -->
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <!-- <td>31</td> -->
+          <td><input class="short" type="date" name="get" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+      </table>
+      <h4>4. 수상경력</h4>
+      <table border="1">
+        <tr>
+          <td class="bg">일자</td>
+          <td class="bg">단체</td>
+          <td class="bg">내용</td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              class="short"
+              type="date"
+              name="
+            award"
+            />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              class="short"
+              type="date"
+              name="
+          award"
+            />
+          </td>
+          <td><input type="text" class="content" /></td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+      </table>
+      <h4>5. 경력사항</h4>
+      <table border="1">
+        <tr>
+          <td class="bg title">회사명</td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+        <tr>
+          <td class="bg title">근무기간</td>
+          <td>
+            <input class="short" type="date" name="work" value="start day" /> ~
+            <input class="short" type="date" name="work" value="last day" />
+          </td>
+        </tr>
+        <tr>
+          <td class="bg title">근무부서 / 직위</td>
+          <td><input type="text" class="content" /></td>
+        </tr>
+      </table>
+      <div>
+        <button type="reset" value="취소">취소</button>
+        <button type="submit" value="전송">전송</button>
+      </div>
+    </form>
+  </body>
+</html>

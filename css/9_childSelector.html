@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자식 선택자</title>
+    <!--바로 안에 자식-->
+    <style>
+      div > p {
+        /*div 밑 자식p*/
+        background-color: yellow;
+      }
+
+      div p {
+        /*div의 모든 자손*/
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자식 선택자</h1>
+    <p>자식 선택자로 스타일을 꾸미면 어떻게 될까요(body의 자식)</p>
+    <div>
+      <p>div내부 p태그1(div의 자식)
+        <p>gg</p>
+        <h1>hh</h1>
+      </p>
+      <p>div내부 p태그2(div의 자식)</p>
+      <p>div내부 p태그3(div의 자식)</p>
+      <h3>
+        <p>div내부내부의 p태그1(h3의 자식, div의 자손)</p>
+      </h3>
+    </div>
+    <p>div외부 p태그(body의 자식)</p>
+  </body>
+</html>
