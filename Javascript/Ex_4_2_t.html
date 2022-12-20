@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let win = 0,
+        draw = 0,
+        lose = 0; //전역변수로 해서 기록이 남게 함
+      function gameStart(params) {
+        let users = Number(document.getElementById("userSelectVal").value);
+        let computers = Math.floor(Math.random() * 3) + 1;
+        console.log(users, computers);
+
+        let userImg = "";
+        let comImg = "";
+
+        switch (users) {
+          case 1:
+            userImg = "<img src='img/scissors.png'/>";
+            break;
+
+          case 2:
+            userImg = "<img src='img/rock.png'/>";
+            break;
+
+          default:
+            userImg = "<img src='img/hand.png'/>";
+            break;
+        }
+
+        switch (computers) {
+          case 1:
+            comImg = "<img src='img/scissors.png'/>";
+            break;
+
+          case 2:
+            comImg = "<img src='img/rock.png'/>";
+            break;
+
+          default:
+            comImg = "<img src='img/hand.png'/>";
+            break;
+        }
+        document.getElementById("user").innerHTML = userImg;
+        document.getElementById("computer").innerHTML = comImg;
+
+        let result = "";
+        if (users == computers) {
+          result = "비겼다.";
+          draw++;
+        } else if (
+          (users == 1 && computers == 3) ||
+          (users == 2 && computers == 1) ||
+          (users == 3 && computers == 2)
+        ) {
+          result = "이겼다.";
+          win++;
+        } else {
+          result = "졌다.";
+          lose++;
+        }
+
+        document.getElementById("result").innerHTML = `<h4>${result}</h4>`;
+        document.getElementById(
+          "total"
+        ).innerHTML = `<h5>${win}승 ${draw}무 ${lose}패</h5>`;
+      }
+    </script>
+    <style>
+      td img {
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">가위, 바위, 보 게임</h1>
+
+    <div class="userInput">
+      가위, 바위, 보 중에 하나를 선택하시고, 버튼을 누르세요
+      <select name="" id="userSelectVal">
+        <option value="1">가위</option>
+        <option value="2">바위</option>
+        <option value="3">보</option>
+      </select>
+      <input type="button" value="게임시작" onclick="gameStart();" />
+    </div>
+
+    <table border="1">
+      <tr>
+        <td>User</td>
+        <td>Computer</td>
+      </tr>
+      <tr>
+        <td id="user"></td>
+        <td id="computer"></td>
+      </tr>
+    </table>
+    <div id="result"></div>
+    <div id="total"></div>
+  </body>
+</html>

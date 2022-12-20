@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전역변수 vs 지역변수</title>
+    <script>
+      let data = 3; //전역변수
+      if (data > 0) {
+        console.log(data); //3
+        let tmp = 5; //지역변수
+        console.log(tmp); //5
+
+        var tmp2 = 5; //지역변수
+        console.log(tmp2); //5
+      }
+
+      //console.log(tmp); // not defined //지역변수로 선언된 변수이기 때문에 여기서 출력 불가능
+
+      console.log(tmp2); //var 키워드로 선언된 변수는 {}내에서 선언되었더라도, 전역변수 취급을 받아 변수의 범위가 애매모호해진다. (가급적 var 사용금지)
+    </script>
+  </head>
+  <body></body>
+</html>

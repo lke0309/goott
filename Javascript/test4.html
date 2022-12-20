@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //"안녕하세요"를 5번 반복하여 출력하는 프로그램
+
+      for (let i = 0; i < 5; i++) {
+        document.write("안녕하세요!</br>");
+      }
+      //＊을 50번 반복하여 출력하는 프로그램
+
+      for (let i = 0; i < 50; i++) {
+        document.write("*");
+      }
+
+      // ul 태그 안에 li태그를 4번 나오도록 그리고 li태그 안에는 1,2,3,4,가 들어가도록 만드세요.
+      let ul_1 = "<ul>";
+      for (let i = 1; i <= 4; i++) {
+        ul_1 += `<li>${i}</li>`;
+      }
+      ul_1 += "</ul>";
+      document.write(ul_1);
+
+      //4행 3열 태이블을 만드세요 (for문은 한번 사용)...td안에는 0부터 1씩 증가하는 숫자를 들어가도록 하세요.
+      let table = `<table border = '1'>`;
+      let tdname = 0;
+
+      for (let i = 0; i < 4; i++) {
+        table += `
+          <tr>
+            <td>${tdname++}</td>
+            <td>${tdname++}</td>
+            <td>${tdname++}</td>
+          </tr>`;
+      }
+      table += `</table>`;
+      document.write(table);
+
+      //1~5까지의 누적 합을 구하시고 출력하세요.
+      let add = 0;
+      for (let i = 0; i < 6; i++) {
+        add += i;
+      }
+      document.write(add);
+
+      document.write("</br>");
+
+      //1~100까지의 짝수합, 홀수 합 구하세요
+      let even = 0;
+      let odd = 0;
+      for (let i = 0; i < 101; i++) {
+        if (i % 2 == 0) {
+          even += i;
+        } else {
+          odd += i;
+        }
+      }
+      document.write(even + "</br>");
+      document.write(odd + "</br>");
+
+      //if문 안쓰고
+
+      let even_ = 0;
+      let odd_ = 0;
+      for (let i = 0; i < 101; i++) {
+        if (i % 2 == 0) {
+          even_ += i;
+        } else {
+          odd_ += i;
+        }
+      }
+      document.write(even_ + "</br>");
+      document.write(odd_ + "</br>");
+
+      //사용자에게 단을 입력 받아 해당하는 단의 구구단을 출력하세요.
+    </script>
+  </head>
+  <body></body>
+</html>

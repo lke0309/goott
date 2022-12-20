@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let height = Number(window.prompt("키를 입력하세요(cm): ", "0"));
+      let weight = Number(window.prompt("몸무게를 입력하세요(kg)", "0"));
+      height /= 100; //height = height /100;
+
+      let bmi = weight / (height * height);
+      let result = "";
+
+      if (bmi < 18.5) {
+        result = "저체중";
+      } else if (bmi >= 18.5 && bmi <= 22.9) {
+        result = "정상";
+      } else if (bmi >= 23 && bmi <= 24.9) {
+        result = "위험체중";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        result = "1단계 비만";
+      } else {
+        result = "고도비만";
+      }
+
+      document.write(`bmi지수: ${bmi}, 결과는 ${result} 입니다.`);
+    </script>
+  </head>
+  <body></body>
+</html>

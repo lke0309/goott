@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch ~case를 활용한 짝수/ 홀수 판별</title>
+    <script>
+      let data = Number(window.prompt("숫자를 입력하세요", "0"));
+      //Number: 함수의 역할을하는 생성자
+      console.log(data); //문자를 입력하면 위의 Number() 생성자에 의해 숫자로 바뀌어지지 않아서, NaN(Not A Number)이 출력됨.
+      data %= 2; //data = data % 2;
+      let result = "";
+
+      switch (data) {
+        case 0:
+          result = "짝수";
+          break;
+
+        default:
+          result = "홀수";
+      }
+      document.write(`입력하신 수는 ${result}입니다.`);
+    </script>
+  </head>
+  <body></body>
+</html>

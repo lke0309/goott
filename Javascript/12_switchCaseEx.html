@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>점심 뭐 먹지...?</title>
+    <script>
+      //추천메뉴를 출력하는 프로그램 작성
+      //1부터 7까지 랜덤한 수를 출력하고, 그 수가
+      //1: 짜장면, 2:김치찌개, 3: 돈까스, 4: 햄버거, 5: 부대찌개, 6: 쌀국수, 7: 라면
+
+      //0) 필요한 변수 선언
+      let randNum = 0,
+        foodName = "",
+        foodImg = "";
+      //1) 1~7까지의 랜덤한 정수를 구한다.
+      randNum = Math.floor(Math.random() * 7) + 1;
+      //Math.floor = 소수점 이하 잘라냄
+      //2) 1번에서 나온 랜덤한 수가 어떤 음식인지 비교판단 한다.
+
+      switch (
+        randNum //switch괄호 안에 수가 정수또는 상수여야만 가능
+      ) {
+        case 1:
+          foodName =
+            " <a href='https://namu.wiki/w/%EC%A7%9C%EC%9E%A5%EB%A9%B4'>짜장면</a>";
+          foodImg = "img/jjajang.jpg";
+          break; //해당 switch 블럭을 빠져나가게 한댜.
+
+        case 2:
+          foodName = "김치찌개";
+          foodImg = "img/kimchi.jpg";
+          break;
+        case 3:
+          foodName = "돈까스";
+          foodImg = "img/don.jpg";
+          break;
+        case 4:
+          foodName = "햄버거";
+          foodImg = "img/hambuger.jpg";
+          break;
+        case 5:
+          foodName = "부대찌개";
+          foodImg = "img/bude.jpg";
+          break;
+        case 6:
+          foodName = "쌀국수";
+          foodImg = "img/ssal.jpg";
+          break;
+
+        default:
+          foodName = "라면";
+          foodImg = "img/ramen.jpg";
+          break;
+      }
+
+      //   if (randNum == 1) {
+      //     foodName =
+      //       " <a href='https://namu.wiki/w/%EC%A7%9C%EC%9E%A5%EB%A9%B4'>짜장면</a>";
+      //     foodImg = "img/jjajang.jpg";
+      //   } else if (randNum == 2) {
+      //     foodName = "김치찌개";
+      //     foodImg = "img/kimchi.jpg";
+      //   } else if (randNum == 3) {
+      //     foodName = "돈까스";
+      //     foodImg = "img/don.jpg";
+      //   } else if (randNum == 4) {
+      //     foodName = "햄버거";
+      //     foodImg = "img/hambuger.jpg";
+      //   } else if (randNum == 5) {
+      //     foodName = "부대찌개";
+      //     foodImg = "img/bude.jpg";
+      //   } else if (randNum == 6) {
+      //     foodName = "쌀국수";
+      //     foodImg = "img/ssal.jpg";
+      //   } else {
+      //     foodName = "라면";
+      //     foodImg = "img/ramen.jpg";
+      //   }
+    </script>
+    <style>
+      img {
+        width: 500px;
+        height: 500px;
+      }
+      .title {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid hotpink;
+      }
+      #foodName {
+        text-align: center;
+      }
+      .food {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">오늘의 추천 메뉴</h1>
+
+    <div id="foodName"></div>
+
+    <div class="food">
+      <img id="foodImg" />
+    </div>
+
+    <script>
+      //3) 음식을 출력한다.
+
+      //document.write(`오늘의 점심메뉴: ${foodName}`);
+
+      //현재 웹 문서에거 id값이foodName인 태그를 찾아 innerHTML속성에 `오늘의 점심메뉴: ${foodName}`할당
+      document.getElementById(
+        "foodName"
+      ).innerHTML = `오늘의 점심메뉴: ${foodName}`;
+      //document.write(foodImg);
+
+      //현재 웹 문서에서 id값이foodImg인 태그를 찾아 src속성에 foodImg값 할당
+      document.getElementById("foodImg").src = foodImg;
+    </script>
+  </body>
+</html>

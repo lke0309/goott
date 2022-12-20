@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if~else if ~else문</title>
+    <script>
+      //사용자에게 이름 , 국어 ,영어, 수학, 점수를 입력받아 총점, 평균을 구하고, 학점을 구해 출력하는 프로그램을 작성하세요.
+      //단 평균이 90점 이상 100점 이하면 A, 80점 이상 90점 미만이면 B, 70점 이상 80점 미만이면C , 60점 이상 70점 미만이면 D, 나머지는 F학점이다.
+
+      //1) 이름, 국어, 영어, 수학을 입력받는다.
+      let name = window.prompt("이름을 입력하세요: ", "");
+      let kor = Number(window.prompt("국어점수를 입력하세요: ", "0"));
+      let eng = Number(window.prompt("영어점수를 입력하세요: ", "0"));
+      let math = Number(window.prompt("수학점수를 입력하세요: ", "0"));
+
+      //2) 총점, 평균을 구한다.
+      let total = kor + eng + math;
+      let avg = total / 3;
+
+      let grade = "";
+
+      //3) 학점을 구한다.
+      if (avg <= 100 && avg >= 90) {
+        grade = "A";
+      } else if (avg < 90 && avg >= 80) {
+        grade = "B";
+      } else if (avg < 80 && avg >= 70) {
+        grade = "C";
+      } else if (avg < 70 && avg >= 60) {
+        grade = "D";
+      } else grade = "F";
+
+      document.write(
+        `이름: ${name} </br> 총점은${total}이고, 평균은 ${avg}이며, 학점은${grade}입니다.`
+      ); //그냥 출력
+
+      let output = `<table class='score'><tr><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td></tr><tr><td>${name}</<td><td>${kor}</td><td>${eng}</td><td>${math}</td><td>${total}</td><td>${avg}</td><td>${grade}</td></tr></table>`; // 표로 출력
+
+      document.write(output);
+    </script>
+    <style>
+      .score,
+      tr,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

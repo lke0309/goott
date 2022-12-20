@@ -7,19 +7,88 @@
     <title>Document</title>
     <script>
       //네모
-      for (let i = 0; i < 5; i++) {
-        document.write("</br>");
-        for (let j = 0; j < 5; j++) {
+      for (let i = 0; i < 5; ++i) {
+        for (let j = 0; j < 5; ++j) {
           document.write("*");
         }
+        document.write("</br>");
       }
       document.write("</br>");
+
       //세모
-      for (let i = 0; i < 5; i++) {
-        document.write("</br>");
-        for (let j = 0; j < 5; j++) {
+      for (let i = 0; i < 5; ++i) {
+        for (let j = 0; j <= i; ++j) {
           document.write("*");
         }
+        document.write("</br>");
+      }
+      document.write("</br>");
+
+      //역세모
+      for (let i = 0; i < 5; ++i) {
+        for (let j = 4; j >= i; --j) {
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+      document.write("</br>");
+
+      //피라미드 self
+      for (let i = 0; i < 6; ++i) {
+        for (let j = 5; j > i; --j) {
+          document.write("&nbsp;&nbsp;");
+        }
+        for (let k = 1; k < i * 2; ++k) {
+          document.write("*&nbsp;");
+        }
+        document.write("</br>");
+      }
+      document.write("</br>");
+
+      //역피라미드 self/ &앰퍼샌드
+      for (let i = 0; i < 5; ++i) {
+        for (let j = 0; j < i; ++j) {
+          document.write("&nbsp;&nbsp;");
+        }
+        for (let k = 9; k > i * 2; --k) {
+          document.write("*&nbsp;");
+        }
+        document.write("</br>");
+      }
+      document.write("</br>");
+      //피라미드 유튭 1
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 4 - i; j++) {
+          document.write("&nbsp;");
+        }
+        for (let j = 0; j < 2 * i + 1; j++) {
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+
+      document.write("</br>");
+      //피라미드 유튭 2
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 4 - i; j++) {
+          document.write("&nbsp;&nbsp;");
+        }
+        for (let j = 0; j < 2 * i + 1; j++) {
+          document.write("*&nbsp;");
+        }
+        document.write("</br>");
+      }
+
+      document.write("</br>");
+      //피라미드 유튭 1
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 1 + i; j++) {
+          document.write("&nbsp;");
+        }
+        for (let j = 0; j < 9 - 2 * i; j++) {
+          document.write("*");
+        }
+        document.write("</br>");
       }
     </script>
   </head>

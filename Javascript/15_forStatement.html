@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for문</title>
+    <script>
+      window.onload = function () {
+        //웹 브라우저에
+        document.getElementById("table").innerHTML = table;
+      };
+      //"안녕하세요"를 5번 반복하여 출력하는 프로그램
+
+      for (let i = 0; i < 5; i++) {
+        //i=0,1,2,3,4 일때 반복
+        document.write(`${i}번째 안녕하세요<br/>`);
+      }
+      document.write("끝");
+
+      document.write("</br>");
+
+      //＊을 50번 반복하여 출력하는 프로그램
+      for (let i = 0; i < 50; i++) {
+        document.write("★");
+      }
+
+      // ul 태그 안에 li태그를 4번 나오도록 그리고 li태그 안에는 1,2,3,4,가 들어가도록 만드세요.
+
+      let output = "<ul>";
+      for (let i = 0; i < 4; i++) {
+        output += `<li>${i}</li>`;
+      }
+      output += "</ul>";
+
+      document.write(output);
+
+      //4행 3열 태이블을 만드세요 (for문은 한번 사용)...td안에는 0부터 1씩 증가하는 숫자를 들어가도록 하세요.
+
+      let table = "<table border='1'>";
+      let cnt = 0;
+      for (let i = 0; i < 4; i++) {
+        table += `<tr><td>${cnt++}</td><td>${cnt++}</td><td>${cnt++}</td></tr>`;
+      }
+      table += "</table>";
+
+      //1~5까지의 누적 합을 구하시고 출력하세요.
+      let sum = 0;
+      for (let i = 0; i < 101; i++) {
+        sum += i; //sum = sum + i;
+      }
+      document.write(sum);
+
+      document.write("</br>");
+      //1~100까지의 짝수합, 홀수 합 구하세요
+
+      let oddsum = 0;
+      let evensum = 0;
+      for (let i = 0; i < 101; i++) {
+        if (i % 2 == 0) {
+          evensum += i;
+        } else {
+          oddsum += i;
+        }
+      }
+      document.write(oddsum);
+      document.write("</br>");
+      document.write(evensum);
+
+      //if문 안쓰고// 이건 좋은 알고리즘은 아님..
+      let oddSum = 0;
+      let evenSum = 0;
+      for (let i = 1; i < 100; ) {
+        oddSum += i++;
+        evenSum += i++;
+      }
+      document.write(`짝수합은 ${evenSum}, 홀수합은 ${oddSum}`);
+
+      //사용자에게 단을 입력 받아 해당하는 단의 구구단을 출력하세요.
+      let dan = Number(window.prompt("단을 입력하세요: ", "0"));
+      for (let i = 0; i < 10; i++) {
+        document.write(`${dan}*${i}=${dan * i}</br>`);
+      }
+
+      //
+    </script>
+  </head>
+  <body>
+    <div id="table"></div>
+  </body>
+</html>
