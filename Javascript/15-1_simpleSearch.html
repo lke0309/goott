@@ -10,19 +10,21 @@
       //유저가 어떤 수를 입력했을때, 유저가 입력한 값이 있다면  입력한 곳이 있는 방을 알려주고,
       //유저가 입력한 수를 찾지 못했을 경우."찾지 못했다!"라고 출력하는 프로그램 작성
 
-      let datas = new Array(50); // 방 50개 짜리 배열을  datas라는 이름으로 생성. (빈배열)
+      let data = new Array(50); // 방 50개 짜리 배열을  data라는 이름으로 생성. (빈배열)
 
       for (let i = 0; i < 50; i++) {
         //i = 0 ~ 49까지 반복
-        datas[i] = Math.floor(Math.random() * 200) + 1; // 배열의 각 요소(방)에 1~ 200까지의 랜덤 수 대입
+        data[i] = Math.floor(Math.random() * 200) + 1; // 배열의 각 요소(방)에 1~ 200까지의 랜덤 수 대입
       }
-      console.log(datas);
+      console.log(data);
+
+      //body영역에 테이블 태그를 이용하여 출력(5행 10열짜리 표로 출력)
 
       let result = "";
       let findNum = Number(window.prompt("찾을 수를 입력하세요"), "0");
       let isFind = false;
       for (let i = 0; i < 50; i++) {
-        if (findNum === datas[i]) {
+        if (findNum === data[i]) {
           //찾았다!
           result += i + ",";
           isFind = true;

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while 반복문</title>
+    <script>
+      //단을 입력받아 입력받은 단의 구구단을 출력하세요.
+      let dan = window.prompt("단을 입력하세요: ", "0");
+      let i = 1; //초기값
+      while (i < 10) {
+        document.write(`${dan}*${i}=${dan * i}<br/>`);
+        i++; //증감식
+      }
+      document.write("<hr/>");
+
+      //3*4별 직사각형
+      let j = 0;
+      while (j < 3) {
+        let k = 0;
+        while (k < 4) {
+          document.write("*");
+          k++;
+        }
+        document.write("<br/>");
+        j++;
+      }
+      document.write("<hr/>");
+
+      //for문으로 했던 예제를 while문으로 바꿔보기!
+    </script>
+  </head>
+  <body></body>
+</html>

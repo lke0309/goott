@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while문과 do~while문</title>
+    <script>
+      //사용자에게 숫자를 입력받는다. 단, 숫자를 입력하지 않으면 숫자를 입력할 때 까지 계속 입력 받도록 하시고, 숫자가 입력되면 입력된 숫자를 화면에 출력
+      //유저가 숫자를 몇회 만에 입력할지 모르므로, for 반복문 사용해서 코딩할 때 힘들다. 이럴 때 while을 사용하여 쉽게 코딩 할 수 있다.
+
+      //   let data = window.prompt("숫자를 입력하세요: ", "0");
+      //   while (!isFinite(data)) {
+      //     //데이터가 숫자가 아니면 == 문자면 while문 작동(!이 우선순위가 높아서 많이 사용함)
+      //     let data = window.prompt("숫자를 입력하세요: ", "0");
+      //   }
+      //   document.write(data);
+
+      //위코드는 입력받는 부분에서 중복코드가 생기게 된다. while문을 사용하여 중복코드가 생길 때, while문을 do~while문으로 바꾸면 중복코드가 생기지 않게 된다.
+
+      let data = 0; // 전역변수
+      do {
+        data = window.prompt("숫자를 입력하세요: ", "0");
+      } while (isNaN(data)); //!isFinite(유한(숫자)하지 않다) 대신 isNan(숫자가 아니면)
+      document.write(data);
+    </script>
+  </head>
+  <body></body>
+</html>
