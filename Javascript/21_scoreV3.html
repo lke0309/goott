@@ -44,6 +44,10 @@
       );
 
       stu.splice(6, 1, "A");
+      //tag.splice(2, 1, "국사");
+      // stu.splice(2, 1, "100");
+      //tag.splice(4, 0, "사회");
+      //stu.splice(4, 0, "40");
 
       // let upLine = "";
       // let downLine = "";
@@ -61,7 +65,7 @@
       // document.write(j);
 
       let j = `<table border = "1"><tr>`;
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < tag.length; i++) {
         j += `<td>${tag[i]}</td>`;
       }
       j += "</tr><tr>";
