@@ -11,9 +11,44 @@
       //유저가 입력한 수를 찾지 못했을 경우."찾지 못했다!"라고 출력하는 프로그램 작성
 
       //1) 방 50개 선언
+      let home = new Array(50);
+
       //2) 그방안에 1~200까지의 랜덤한 수를 넣고
+      for (let i = 0; i < home.length; i++) {
+        home[i] = Math.floor(Math.random() * 200) + 1;
+      }
+      //방에 있는 모든 수를 콘솔에 출력
+      console.log(home);
       //3) 유저에게 수 입력받기
+      let user = Number(window.prompt("찾을 수를 입력하세요: ", ""));
+
       //4) 유저가 입력한 값 -> 방알려주기
+      //   for (let i = 0; i < home.length; i++) {
+      //     if (user == home[i]) {
+      //       document.write("찾았다!");
+      //     } else {
+      //       document.write(`찾지 못했다....ㅜ`);
+      //     }
+      //   }
+
+      let isFind = false;
+      for (let i of home) {
+        if (user == i) {
+          //찾은 경우
+          isFind = true;
+        } else {
+          //찾지 못한 경우
+        }
+      }
+
+      let result = "";
+      if (isFind == true) {
+        result = "찾음요";
+      } else {
+        result = "못찾음요 이상진 바보";
+      }
+
+      document.write(`내가 입력한 수는 : ${user} ${result}`);
       //5) 입력한 수 못찾으면 "찾지 못했다." 출력
     </script>
   </head>
