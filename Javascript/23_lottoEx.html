@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로또 번호 생성기</title>
+    <script>
+      let lotto = new Array(6); //방 6개 짜리 빈 배열을 생성
+      let tmp = 0;
+
+      for (let index = 0; index < lotto.length; index++) {
+        //6번 반복
+        do {
+          tmp = Math.floor(Math.random() * 45) + 1; //1부터 45까지의 랜덤한 정수를 하나 구해서 tmp에 대입
+        } while (isDuplicate());
+        lotto[index] = tmp;
+      }
+
+      document.write(`이번주의 로또 1등 번호는 ${lotto}`);
+      //lotto 배열에 tmp값이 있는지 없는 지 검사해서 있다면 true 없다면 false 반환
+      function isDuplicate() {
+        console.log(lotto, tmp);
+        // for (let i = 0; i < lotto.length; i++) {
+        //   if (tmp == lotto[i]) {
+        //     //중복이 있다.
+        //     return true; //return: 반환값을 가지고, 함수를 호출한곳으로 되돌아감.
+        //   }
+        // }
+        // return false; // 중복이 없다.
+        let duplicate = false;
+        let findPos = lotto.indexOf(tmp); //중복되지 않은 것을 찾을 때는 indexof가 적합하다.
+        if (findPos != -1) {
+          //중복이 있다.
+          duplicate = true; // do 반복
+        }
+        return duplicate; //while 실행
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

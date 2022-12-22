@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let arr = new Array(10); // 방만들기
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] = Math.floor(Math.random() * 100) + 1; // 1~100까지의 랜덤한 수
+      }
+
+      arr.sort(); // 정렬 해주는데 유니코드로 인식해서 문자말고 숫자는 정렬하기 어려움.
+      console.log(arr);
+      table(); //테이블 출력 (정렬 전 출력)
+
+      //max값,min값을 초기화
+
+      let temp = 0;
+
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] > arr[j]) {
+            //오름차순 정렬, 내림차순 정렬일 때는 arr[i] < arr[j]
+            temp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
+          }
+        }
+      }
+
+      table(); //테이블 출력 (정렬 후 출력)
+
+      function table() {
+        let table = "<table border = '1'><tr>";
+        for (let i = 0; i < arr.length; i++) {
+          table += "<td>" + arr[i] + "</td>";
+        }
+        table += "</tr></table>";
+        document.write(table);
+      }
+
+      //document.getElementById().innerHTML = "";
+    </script>
+  </head>
+  <body></body>
+</html>

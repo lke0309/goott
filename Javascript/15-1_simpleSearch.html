@@ -19,22 +19,46 @@
       console.log(data);
 
       //body영역에 테이블 태그를 이용하여 출력(5행 10열짜리 표로 출력)
+      let output = "<table border='1'>";
+      let cnt = 0;
+      for (let i = 0; i < 5; i++) {
+        output += `<tr class = "tr">`;
+        for (let j = 0; j < 10; j++) {
+          output += `<td>${data[cnt++]}</td>`;
+        }
+        output += `</tr>`;
+      }
+      output += "</table>";
+
+      document.write(output);
 
       let result = "";
       let findNum = Number(window.prompt("찾을 수를 입력하세요"), "0");
       let isFind = false;
-      for (let i = 0; i < 50; i++) {
-        if (findNum === data[i]) {
-          //찾았다!
-          result += i + ",";
-          isFind = true;
-        } //여기서 else를 쓰지 않은 이유는 한번만 보고 없으면 없다고 하지 않기위해
-      }
+      // for (let i = 0; i < 50; i++) {
+      //   if (findNum === data[i]) {
+      //     //찾았다!
+      //     result += i + ",";
+      //     isFind = true;
+      //   } //여기서 else를 쓰지 않은 이유는 한번만 보고 없으면 없다고 하지 않기위해
+      //}
+
       if (isFind == false) {
         document.write(`${findNum}은 없습니다!`);
       } else {
         document.write(`${findNum}은 ${result}번 째 있습니다.`);
+        let tds = document.getElementsByTagName("td"); // 웹문서에 있는 모든 td태그(배열구조)를 가져와서 tds라는 변수
+        console.log(tds[0].innerHTML);
+
+        for (let item of tds) {
+          if (findNum == item.innerHTML) {
+            // 찾았다
+            item.style.backgroundColor = "yellow";
+            item.innerHTML = "★" + findNum;
+          }
+        }
       }
+      console.log(document.getElementsByClassName("tr"));
     </script>
   </head>
   <body></body>
