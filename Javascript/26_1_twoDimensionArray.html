@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2차원 배열</title>
+    <script>
+      //2차원 배열의 기본 운용
+      //2행 3열인 2차원 배열을 생성해보자
+
+      //   let ar = [
+      //     ["a", "b", "c"],
+      //     ["d ", "e", "f"],
+      //   ];
+
+      let ar = new Array(2);
+      ar[0] = new Array(3);
+      ar[1] = new Array(3);
+      ar[0][0] = "a";
+      ar[0][1] = "b";
+      ar[0][2] = "c";
+      ar[1][0] = "d";
+      ar[1][1] = "e";
+      ar[1][2] = "f";
+
+      console.log(ar);
+
+      document.write(ar[0][2] + "<br/>"); //c
+      document.write(ar[1][1] + "<br/>"); //e
+
+      //ar[0][1] = 50;
+      console.log(ar);
+
+      document.write(ar.length + "<br/>"); //행의 길이:2
+      document.write(ar[0].length + "<br/>"); //0 행의 길이:3
+      document.write(ar[1].length + "<br/>"); //1 행의 길이:3
+
+      //ar의 모든 데이터를 테이블 태그를  이용하여 출력하기
+      let output = "<table border ='1'";
+      for (let i = 0; i < ar.length; i++) {
+        output += "<tr>";
+        for (let j = 0; j < ar[0].length; j++) {
+          output += `<td>${ar[i][j]}</td>`;
+        }
+        output += "</tr>";
+      }
+      output += "</table>";
+      document.write(output);
+
+      //jagged배열: 행마다 열의 길이가 각각 다른 구조의 2차원 배열.(과거에 메인메모리가 비쌌을 때, 메모리를 절약하기 위해 고안된 방식)
+      let jagged = new Array(3);
+      jagged[0] = [45, 24, 12];
+      jagged[1] = [45, 23];
+      jagged[2] = [77, 77, 65, 45];
+
+      console.log(jagged);
+    </script>
+  </head>
+  <body></body>
+</html>

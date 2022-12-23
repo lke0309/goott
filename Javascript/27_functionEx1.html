@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 정의 함수의 기본 운용법</title>
+    <script>
+      //함수명은 보통 영문자 소문자로 시작하고, 함수에서 수행하고자 하는 기능을 동사형태로 만든다.
+
+      function sayHello() {
+        //매개변수도 없고, 반환값도 없는 함수
+        //함수는 함수의 위치와 상관없이, 호출되기 이전에는 절대 실행되지 않는다.
+        document.write("Hello!");
+      } //sayHello 함수의 끝
+
+      function sayHi(times) {
+        //times라는 변수 생성 let없이도 생성가능
+        //매개변수가 있고, 반환값은 없는 함수
+        for (let i = 0; i < times; i++) {
+          document.write("Hi");
+        }
+      }
+
+      function addTwoNumber(num1, num2) {
+        // 매개변수가 2개 있고, 반환값은 없는 함수
+        document.write(num1 + num2);
+      }
+
+      let times = 3;
+      for (let i = 0; i < times; i++) {
+        sayHello(); // 함수의 호출(함수가 만들어진 형태(prototype, 또는 함수의 정의문을 보고 호출하게 된다.))
+      }
+
+      document.write("<hr/>");
+
+      sayHi(5);
+
+      document.write("<hr/>");
+
+      addTwoNumber(3, 5);
+
+      //document.write(num1); //num1은 addTwoNumber()함수 내에서만 선언된 지역변수이다. 함수가 끝나면 메모리에서 소멸.
+      document.write("<hr/>");
+
+      document.write(addTwoNumberWithReturnValue(30, 50)); //출력
+      let result = addTwoNumberWithReturnValue(30, 50); //result에 값 넣어주기
+      console.log(result); //콘솔에 출력
+
+      function addTwoNumberWithReturnValue(num1, num2) {
+        let result = 0; //지역변수
+        result = num1 + num2;
+        return result; // 함수를 호출한 곳으로 되돌려줌.
+      }
+
+      document.write("<hr/>");
+      //2개의 문자열을 받아 한 문자열로 합쳐(연결하여) 반환하는 함수를 만드시되, 이름은 concatStr()로 하세요
+
+      document.write(concatStr("문자", "열"));
+      let result2 = concatStr("문자", "열");
+
+      function concatStr(num1, num2) {
+        let result = "";
+        result = num1 + num2;
+        return result;
+      }
+
+      //-------------------
+      //함수 포인터 방식으로 함수를 정의 할 수 도 있다. concatStr이라는  함수가 이름없는 함수를 가리키고 있기 때문에  comcatStr2가 맟치 함수 명처럼 사용되는 방식
+
+      // function concatStr(str1, str2) {
+      //     return str1 + str2;
+      // }
+
+      let concatStr2 = function (str1, str2) {
+        return str1 + str2;
+      };
+      document.write(concatStr2("홍길동", "씨는 동해번쩍"));
+
+      //인자의 기본값을 줄수도있다.
+      function sum(a, b = 20) {
+        //b의 값은 기본값으로 20이 할당됨
+        console.log(a, b, a + b); // 10 20 30
+      }
+      sum(10);
+
+      //-------------------------------
+
+      function sum2(a, b) {
+        //인자 2개 받음
+        console.log(arguments); //arguments라는 키워드(명령어) 로 배열로 표현함 값이 초과해도 다 넣어줌.
+        console.log(a, b);
+      }
+      sum2(10, 20, 30); //인자 3개
+    </script>
+  </head>
+  <body></body>
+</html>

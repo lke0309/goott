@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrow Functon (화살표 함수)</title>
+    <script>
+      // 화살표(=>)처럼 생긴 기화를 이용하여 함수를 단축화하여 표현할 수 있다.(반환값이 있는 함수에 대해서,,,반환값이 없는 함수는 arrow로 못만듦)
+
+      //   function sum(a, b) {
+      //     return a + b;
+      //   }
+
+      // 위의 sum 함수를 화살표 함수 방식으로 표현하면
+      const sum = (a, b) => a + b;
+
+      console.log(sum(10, 20));
+
+      //   function hi(name) {
+      //     return name + "님 안녕하세요";
+      //   }
+
+      const hi = (name) => name + "님 안녕하세요";
+      //const hi = name => name + "님 안녕하세요";/인자가 하나라면 괄호도 생략 될 수 있다.
+
+      console.log(hi("홍길동"));
+
+      //   function greeting() {
+      //     return "Hello";
+      //   }
+
+      const greeting = () => "Hello";
+      document.write(greeting());
+    </script>
+  </head>
+  <body></body>
+</html>

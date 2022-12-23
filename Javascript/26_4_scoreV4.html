@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2차원 배열을 활용한 성적표</title>
+    <script>
+      //추가문제) 평균을 기준으로 내림차순 정렬해서 출력시키세요.
+      //추가문제 2) 등수를 매겨보세요(평균을 기준으로 등수를 매겨보되, 평균이 같으면 등수가 건너뜁니다.)
+
+      let scores = new Array(4);
+      scores[0] = new Array(8);
+      scores[1] = new Array(8);
+      scores[2] = new Array(8);
+      scores[3] = new Array(8);
+
+      scores = [
+        ["홍길동", 44, 35, 66],
+        ["둘리", 55, 69, 77],
+        ["도우너", 87, 95, 90],
+        ["마이콜", 55, 69, 77],
+      ];
+
+      // for (let i = 0; i < scores.length; i++) { //i= 0,1,2
+      //     scores[i][0] = window.prompt("이름을 입력하세요 ","");
+      //     scores[i][1] = window.prompt("국어점수를 입력하세요 ","");
+      //     scores[i][2] = window.prompt("영어점수를 입력하세요 ","");
+      //     scores[i][3] = window.prompt("수학점수를 입력하세요 ","");
+      // }
+
+      console.log(scores);
+
+      for (let i = 0; i < scores.length; i++) {
+        scores[i][4] = scores[i][1] + scores[i][2] + scores[i][3]; //총점
+        scores[i][5] = scores[i][4] / 3; //평균
+
+        switch (
+          Math.floor(scores[i][5] / 10) //학점계산
+        ) {
+          case 10:
+          case 9:
+            scores[i][6] = "A";
+            break;
+
+          case 8:
+            scores[i][6] = "B";
+            break;
+
+          case 7:
+            scores[i][6] = "C";
+            break;
+
+          case 6:
+            scores[i][6] = "D";
+            break;
+
+          default:
+            scores[i][6] = "F";
+        }
+      }
+
+      let temp = 0;
+
+      for (let i = 0; i < scores.length - 1; i++) {
+        for (let j = i + 1; j < scores.length; j++) {
+          if (scores[i][5] < scores[j][5]) {
+            //오름차순 정렬, 내림차순 정렬일 때는 arr[i] < arr[j]
+            temp = scores[i];
+            scores[i] = scores[j];
+            scores[j] = temp;
+          }
+        }
+      }
+
+      //rank매기기
+      let rank = 1,
+        curRank = 1;
+      scores[0][7] = curRank;
+      for (let i = 1; i < scores.length; i++) {
+        rank++;
+        if (scores[i][5] != scores[i - 1][5]) {
+          curRank = rank;
+        }
+        scores[i][7] = curRank;
+      }
+
+      let table = "<table border = '1'";
+      table +=
+        "<tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th><tr>";
+      for (let i = 0; i < scores.length; i++) {
+        table += "<tr>";
+        for (let j = 0; j < scores[0].length; j++) {
+          table += `<td>${scores[i][j]}</td>`;
+        }
+        table += "</tr>";
+      }
+      table += "</table>";
+      document.write(table);
+
+      //   window.onload = function () {
+      //     document.getElementById("scores").innerHTML = table;
+      //   };
+    </script>
+  </head>
+  <body>
+    <div id="scores"></div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2차원 배열</title>
+    <script>
+      let stu = new Array(3);
+      stu[0] = new Array(7);
+      stu[1] = new Array(7);
+      stu[2] = new Array(7);
+
+      let legend = ["이름", "국어", "영어", "수학", "총점", "평균", "학점"];
+
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 4; j++) {
+          stu[i][j] = window.prompt(`${legend[j]}데이터를 입력하세요: `, "");
+
+          //총점, 평균, 학점 계산
+          stu[i][4] = Number(stu[i][1]) + Number(stu[i][2]) + Number(stu[i][3]);
+          stu[i][5] = Math.round((stu[i][4] / 3) * 100) / 100;
+        }
+      }
+
+      for (let i = 0; i < 3; i++) {
+        if (stu[i][5] <= 100 && stu[i][5] >= 90) {
+          stu[i][6] = "A";
+        } else if (stu[i][5] < 90 && stu[i][5] >= 80) {
+          stu[i][6] = "B";
+        } else if (stu[i][5] < 80 && stu[i][5] >= 70) {
+          stu[i][6] = "C";
+        } else if (stu[i][5] < 70 && stu[i][5] >= 60) {
+          stu[i][6] = "D";
+        } else stu[i][6] = "F";
+      }
+
+      //stu의 모든 데이터를 테이블 태그를  이용하여 출력하기
+      let output = "<table border ='1'";
+      for (let i = 0; i < 3; i++) {
+        output += "<tr>";
+        for (let j = 0; j < 7; j++) {
+          output += `<td>${stu[i][j]}</td>`;
+        }
+        output += "</tr>";
+      }
+      output += "</table>";
+      document.write(output);
+    </script>
+  </head>
+  <body></body>
+</html>
