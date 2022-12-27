@@ -6,34 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2차원 배열을 활용한 성적표</title>
     <script>
-        //추가문제) 평균을 기준으로 내림차순 정렬해서 출력시키세요.
-        //추가문제 2) 등수를 매겨보세요(평균을 기준으로 등수를 매겨보되, 평균이 같으면 등수가 건너뜁니다.)
+      //추가문제) 평균을 기준으로 내림차순 정렬해서 출력시키세요.
+      //추가문제 2) 등수를 매겨보세요(평균을 기준으로 등수를 매겨보되, 평균이 같으면 등수가 건너뜁니다.)
 
-        //1. 학생 3명의 배열 만들기
-        //2. 이름, 국어 수학, 영어 유저에게 입력 받기
-        //3. 총점 , 평균, 학점 계산 해서
-        //4. 테이블에 넣기
+      //1. 학생 3명의 배열 만들기
+      //2. 이름, 국어 수학, 영어 유저에게 입력 받기
+      //3. 총점 , 평균, 학점 계산 해서
+      //4. 테이블에 넣기
 
-        let stu = new Array(3);
-        stu[0] = Array(8);
-        stu[1] = Array(8);
-        stu[2] = Array(8);
+      let stu = new Array(3);
+      stu[0] = Array(8);
+      stu[1] = Array(8);
+      stu[2] = Array(8);
 
-        for (let i = 0; i < stu.length; i++) {
-          stu[i][0] = window.prompt("이름을 입력하세요: ", "");
-          stu[i][1] = Number(window.prompt("국어 점수를 입력하세요: ", "0"));
-          stu[i][2] = Number(window.prompt("영어 점수를 입력하세요: ", "0"));
-          stu[i][3] = Number(window.prompt("수학 점수를 입력하세요: ", "0"));
-        }
-
-
-        for (let i = 0; i < array.length; i++) {
-         stu[i][4]= stu[i][1] + stu[i][2] + stu[i][3]
-         stu[i][5]=(stu[i][4])/3
-
+      for (let i = 0; i < stu.length; i++) {
+        stu[i][0] = window.prompt("이름을 입력하세요: ", "");
+        stu[i][1] = Number(window.prompt("국어 점수를 입력하세요: ", "0"));
+        stu[i][2] = Number(window.prompt("영어 점수를 입력하세요: ", "0"));
+        stu[i][3] = Number(window.prompt("수학 점수를 입력하세요: ", "0"));
       }
 
-      stu[i][6]=
+      for (let i = 0; i < stu.length; i++) {
+        stu[i][4] = stu[i][1] + stu[i][2] + stu[i][3];
+        stu[i][5] = stu[i][4] / 3;
+      }
+
+      switch (key) {
+        case value:
+          break;
+
+        default:
+          break;
+      }
     </script>
   </head>
   <body></body>
