@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체의 종류</title>
+    <script>
+      //1. 내장 객체: 웹 브라우저가 실행될 때, 웹 브라우저 내에 있는 자바 스트립트 실행기에 의해 자동으로 생성되는 객체.
+      //프로그래머가 별도로 생성(new)하지 않고도 사용 가능.
+      console.log(); // console은 Console 클래스로 부터 미리 만들어지 내장객체이다.
+      console = null; //소멸//Document라는 틀은 소멸 못함.
+      document.write(); //이름이 document인 Document 객체
+      window.alert();
+
+      let doc = new Document(); //이름이 doc인 Document 객체
+      console.log(doc); //이때는 살아있음.
+      doc = null; //객체 소멸
+      console.log(doc); //여기서 doc객체 소멸
+
+      //2. static 객체: 웹 브라우저가 실행되어 메모리에 로딩 될 때, 함께 로딩되는 객체.
+      //프로그래머가 별돌로 생성할 수 없으며, 웹 브라우저가 종료 될 때까지 소멸되지 않는다.
+
+      //new Math=new Math(); //Math객체는 생성자가 별도로 없다.(프로그래머가 만들지 않아도, 만들어져 있다.)
+      //console.log(Math);
+
+      document.write(Math.random()); //프로그래머가 객체를 생성하지 않고도 객체가 가지고있는 함수를 실행 할 수 있다.
+
+      //3. instance 객체: 객체를 new연산자를 통해 생성해야 사용할 수 있다. 필요없다면 소멸 시킬 수 도 있다.
+      let ar = new Array();
+      let ar2 = [];
+
+      let now = new Date();
+      document.write(now.toUTCString());
+
+      now = null; //Date객체 소멸
+    </script>
+  </head>
+  <body></body>
+</html>

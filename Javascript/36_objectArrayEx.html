@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/account.js"></script>
+    <!--외부 js 파일 import-->
+    <title>배열에 객체 담아 관리하기</title>
+    <script>
+      let acc1 = new Account("홍길동", "1111-023-04-567899", 500);
+      console.log(acc1);
+
+      let acc2 = new Account("둘리", "1463-023-04-563459", 0);
+      console.log(acc2);
+
+      let clients = [];
+      clients.push(acc1);
+      clients.push(acc2);
+
+      console.log(clients);
+
+      let output = "<ul>";
+      for (let acc of clients) {
+        //clients라는 배열에 각각 (acc),(i 번째에) 접근한다.
+        output += `<li>예금주:${acc.owner}`;
+      }
+
+      //   for (let i = 0; i < clients.length; i++) {
+      //     output += `<li>예금주: ${clients[i].owner}</li>`;
+      //     output += `<li>계좌번호: ${clients[i].accNum}</li>`;
+      //     output += `<li>잔액: ${clients[i].balance}</li>`;
+      //   }
+
+      output += "</ul>";
+      document.write(output);
+      document.write("<hr/>");
+      document.write(JSON.stringify(clients)); //stringify:문자열로 표현해라
+      //clients라는 배열을 JSON으로 출력
+    </script>
+  </head>
+  <body></body>
+</html>

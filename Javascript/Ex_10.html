@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성적표</title>
+    <script>
+      //학생 3명의 이름, 국어, 영어, 수학, 총점, 평균, 학점을  구해 성적을 처리하려한다.
+
+      //이름 ,국어, 영어, 수학, 데이터를 유저에게 입력받아 각각의 총점, 평균, 학점을 구하시고,  성적표를 테이블 태그를 이용하여 출력하세요.(1차원 배열 +  객체 활용)
+
+      function Stu(name, kor, eng, math, total, avg, grade) {
+        this.name = name;
+        this.kor = kor;
+        this.eng = eng;
+        this.math = math;
+        this.total = this.kor + this.eng + this.math;
+        this.avg = Math.round((this.total / 3) * 100) / 100;
+        switch (Math.floor(this.avg / 10)) {
+          case 10:
+          case 9:
+            this.grade = "A";
+            break;
+
+          case 8:
+            this.grade = "B";
+            break;
+
+          case 7:
+            this.grade = "C";
+            break;
+
+          case 6:
+            this.grade = "D";
+            break;
+
+          default:
+            this.grade = "F";
+        }
+      }
+
+      let student = [];
+
+      for (let i = 0; i < 3; i++) {
+        student.push(
+          new Stu(
+            window.prompt(`이름을 입력하세요: `, ""),
+            Number(window.prompt(`국어점수를 입력하세요: `, 0)),
+            Number(window.prompt(`영어점수를 입력하세요: `, 0)),
+            Number(window.prompt(`수학점수를 입력하세요: `, 0))
+          )
+        );
+      }
+
+      console.log(student);
+
+      let output =
+        "<table><tr><td>이름</td><td>국어</td><td>영어</td><td>수학</td><td>총점</td><td>평균</td><td>학점</td></tr>";
+      student.forEach((element) => {
+        output += `<tr><td>${element.name}</<td><td>${element.kor}</td><td>${element.eng}</td><td>${element.math}</td><td>${element.total}</td><td>${element.avg}</td><td>${element.grade}</td></tr>`; // 표로 출력
+      });
+      output += "</table>";
+
+      window.onload = function () {
+        document.getElementById("output").innerHTML = output;
+      };
+
+      console.log(serch);
+      function check() {
+        let serch = document.getElementsByTagName("input")[0].value;
+        if (serch == element.name) {
+          document.write("확인!");
+        }
+      }
+    </script>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="output"></div>
+    <input type="text" /><button type="button" onclick="check();">확인</button>
+  </body>
+</html>
