@@ -20,7 +20,7 @@
         table +=
           "<tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th></tr>";
         for (let i = 0; i < STUDENT_CNT; i++) {
-          table += `<tr class ='stu'>`; ////////
+          table += `<tr class ='stu'>`;
           table += `<td>${scores[i].name}</td><td>${scores[i].kor}</td><td>${scores[i].kor}</td><td>${scores[i].eng}</td><td>${scores[i].math}</td><td>${scores[i].tot}</td><td>${scores[i].avg}</td><td>${scores[i].grade}</td>`;
           table += "</tr>";
         }

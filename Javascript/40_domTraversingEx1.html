@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 운행을 하기 위해 알아야 할, 태그의 기본 속성</title>
+    <script>
+      //태그가 가지고 있는 모든 속성들에 접근 할 수 있다.
+      window.onload = function () {
+        let p = document.getElementById("firstP");
+        console.log(p);
+
+        document.write(`p.tagName: ${p.tagName} <br/>`);
+        document.write(`p.id: ${p.id} <br/>`);
+        document.write(`p.class: ${p.className}<br/`);
+        document.write(`p.innerHTML: ${p.innerHTML} <br/>`); //p태그 안에 있는 태그까지 포함한 내용
+        document.write(`p.innerText: ${p.innerText} <br/>`); //p태그 안에 있는 태그를 뺀 순수한 내용//span 태그가 안들어감. 태그를 제외한 순수한 텍스트만 들어감.
+        document.write(`p.style: ${p.style} <br/>`);
+        document.write(`p.style.color: ${p.style.color} <br/>`);
+        document.write(`p.children: ${p.children} <br/>`); //자식
+        console.log(p.children); //자식
+        document.write(`p.childElementCount: ${p.childElementCount}<br/>`); //자식태그의 갯수를 세어줌.
+        document.write(`p.childNodes: ${p.childNodes}<br/>`);
+        console.log(p.childNodes);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>DOM 객체p태그의 프로퍼티, 스타일, 이벤트리스너,....</h1>
+    <hr />
+    <p
+      id="firstP"
+      class="groupP"
+      style="color: blue; border: 1px dotted red"
+      onclick="this.style.backgroundColor='yellow';"
+    >
+      <!--객체도 속성이 될 수 있기 때문에 속성으로 객체를 가질 수도 있다-->
+      이것은<span>문단 태그</span><b>입니다.</b>
+    </p>
+  </body>
+</html>

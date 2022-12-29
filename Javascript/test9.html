@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 연습</title>
+    <script>
+      function change() {
+        document.getElementById("firstP").style = "color: red";
+        document.getElementById("firstP").style.backgroundColor = "yellow";
+      }
+      window.setTimeout(function leesang() {
+        document.getElementById("lee").style = "color: pink";
+      }, 3000); //클릭 후! 3초 뒤에 색 변환,,하고 싶은데.. 안됨.
+      //안되는 이유: 겉 함수 안에 leesang 이라는 함수가 싸여 있기 때문에 onclik에서 못찾음. 나중에 jquery에서 따로 배우기로 함.
+
+      // function leesang() {
+      //   window.setTimeout(
+      //     (document.getElementById("lee").style.color = "pink"),
+      //     3000
+      //   );
+      // }//누르면 바로 실행됨.
+    </script>
+  </head>
+  <body>
+    <h1>~DOM 연습~</h1>
+    <hr />
+    <p
+      id="firstP"
+      class="groupP"
+      style="color: aqua"
+      onclick="this.style.backgroundColor='red'; change();"
+    >
+      문단태그
+    </p>
+    <p id="lee" style="color: black" onclick="leesang();">색 변환</p>
+  </body>
+</html>
