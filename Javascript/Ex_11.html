@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기 만들기</title>
+    <script>
+      //값 받기, 아이디로 접근, 계산 ,결과
+
+      function calculate() {
+        let number1 = document.getElementById("number1").value;
+        let number2 = document.getElementById("number2").value;
+        let calculate = document.getElementById("calculate").value;
+      }
+
+      function addition() {}
+      function subtraction() {}
+      function Multiplication() {}
+      function Division() {}
+    </script>
+  </head>
+  <body>
+    <button onclick="addition();">+</button>
+    <button onclick="subtraction();">-</button>
+    <button onclick="Multiplication();">×</button>
+    <button onclick="Division();">÷</button>
+
+    <!-- <input type="text" id="number1" />첫번째 값 -->
+    <!-- <input type="text" id="number2" />두번째 값 -->
+    <!-- <input type="text" id="calculate" />연산 -->
+    <!-- <input type="text" id="result" />결과 -->
+    <!-- <input type="buttom" value="" onclick="" /> -->
+    <!-- <input type="buttom" value="" onclick="reset();" /> -->
+
+    <table border="1">
+      <tr>
+        <td><button type="button">7</button></td>
+        <td><button type="button">8</button></td>
+        <td><button type="button">9</button></td>
+        <td><button type="button">×</button></td>
+      </tr>
+      <tr>
+        <td><button type="button">4</button></td>
+        <td><button type="button">5</button></td>
+        <td><button type="button">6</button></td>
+        <td><button type="button">-</button></td>
+      </tr>
+      <tr>
+        <td><button type="button">1</button></td>
+        <td><button type="button">2</button></td>
+        <td><button type="button">3</button></td>
+        <td><button type="button">+</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button type="button">0</button></td>
+        <td></td>
+        <td><button type="button">=</button></td>
+      </tr>
+    </table>
+  </body>
+</html>
