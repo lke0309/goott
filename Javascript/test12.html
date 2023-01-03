@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>키보드 관련 이벤트</title>
+    <script>
+      function check(obj) {
+        console.log(obj);
+        if (event.keyCode == 27) {
+          //esc
+          alert(obj.value);
+        }
+        document.getElementsByTagName("span")[0].innerHTML = obj.value.length;
+        document.getElementsByTagName("span")[1].innerHTML = obj.value.length;
+      }
+    </script>
+  </head>
+  <body>
+    <div><span></span>자 입력중...</div>
+    <input
+      type="text"
+      id="txt_1"
+      onkeyup="check(this);"
+      placeholder="10자 이내로 적으시오..."
+    />
+    <div><span></span>자 입력중...</div>
+  </body>
+</html>
+
+<!-- onkeydown: 글자를 치면 0부터 카운트됨 -->
+<!-- onkeypress: 글자를 치면 0부터 카운트됨, 한글은 카운트 안됨 -->
+<!-- 웬만하면 onkeyup 쓸것 -->

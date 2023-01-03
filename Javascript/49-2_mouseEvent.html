@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마우스 관련 이벤트</title>
+    <style>
+      .big {
+        display: none;
+      }
+    </style>
+    <script>
+      function disp() {
+        document.getElementsByClassName("big")[0].style.display = "block";
+      }
+      function hide() {
+        document.getElementsByClassName("big")[0].style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <img
+        src="img/don.jpg"
+        width="25%"
+        onmouseover="disp();"
+        onmouseout="hide();"
+      />
+      <!-- 요즘은 모바일로 많이 해서 마우스가 없기 때문에 onmouse 이런거 잘 안씀 -->
+    </div>
+    <div>
+      <img src="img/don.jpg" class="big" width="50%" />
+    </div>
+  </body>
+</html>
