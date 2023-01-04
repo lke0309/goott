@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello, jQuery</title>
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // window.onload=function(){} 과 같은 문장이다. = 웹문서가 로딩되면
+
+        $("h1").css("color", "pink");
+        // document.getElementsByTagName("h1")[0].style.color = "pink";
+
+        $("div").click(function () {
+          $(this).html("이렇게 바껴요2");
+        });
+
+        $(".small").mouseover(function () {
+          $(".big").show("slow", function () {//콜백 함수
+            alert("나타남");
+          });
+        });
+
+        $(".small").mouseout(function () {
+          $(".big").hide(2000);
+        });
+
+
+      });
+
+      // function justDo(obj) {
+      //   obj.innerHTML = "이렇게 바껴요1";
+      // }
+    </script>
+  </head>
+  <body>
+    <h1>Hello, JQuery!</h1>
+    <div onclick="justDo(this);">
+      jQuery 는 자바스크립트 코딩을 좀더 빠르고 편하게 사용할 수 있도록 하는
+      라이브러리 입니다.
+    </div>
+    <img
+    src="img/don.jpg"
+    width="25%"
+   class="small"
+  />
+  <!-- 요즘은 모바일로 많이 해서 마우스가 없기 때문에 onmouse 이런거 잘 안씀 -->
+</div>
+<div>
+  <img src="img/don.jpg" class="big" width="50%" style="display: none;" />
+
+  </body>
+</html>

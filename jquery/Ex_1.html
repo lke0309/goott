@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // $("#list3").append("<li>새로운 리스트 추가</li>");
+
+        $(".add").click(function () {
+          $("table").append(
+            " <tr class='list'><td></td><td></td><td></td><td><button class='add'>추가</button><button class='del'>삭제</button></td>"
+          );
+        });
+
+        $(".del").click(function (button) {
+          $(this).parent().parent().remove();
+        });
+      });
+    </script>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      td {
+        width: 50px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>상품명</td>
+        <td>수량</td>
+        <td>가격</td>
+        <td></td>
+      </tr>
+      <tr class="list">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button class="add">추가</button><button class="del">삭제</button>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
