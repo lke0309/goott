@@ -18,7 +18,8 @@
         });
 
         $(".small").mouseover(function () {
-          $(".big").show("slow", function () {//콜백 함수
+          $(".big").show("slow", function () {
+            //콜백 함수
             alert("나타남");
           });
         });
@@ -26,8 +27,6 @@
         $(".small").mouseout(function () {
           $(".big").hide(2000);
         });
-
-
       });
 
       // function justDo(obj) {
@@ -41,15 +40,10 @@
       jQuery 는 자바스크립트 코딩을 좀더 빠르고 편하게 사용할 수 있도록 하는
       라이브러리 입니다.
     </div>
-    <img
-    src="img/don.jpg"
-    width="25%"
-   class="small"
-  />
-  <!-- 요즘은 모바일로 많이 해서 마우스가 없기 때문에 onmouse 이런거 잘 안씀 -->
-</div>
-<div>
-  <img src="img/don.jpg" class="big" width="50%" style="display: none;" />
-
+    <img src="img/don.jpg" width="25%" class="small" />
+    <!-- 요즘은 모바일로 많이 해서 마우스가 없기 때문에 onmouse 이런거 잘 안씀 -->
+    <div>
+      <img src="img/don.jpg" class="big" width="50%" style="display: none" />
+    </div>
   </body>
 </html>
