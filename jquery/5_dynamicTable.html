@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      jQuery를 이용하여 동적으로 행을 추가 삭제 하는 테이블을 만들어보자
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("table").on("click", ".remBtn", function () {
+          //.on은 메서드 오버로딩: 이름은 같되, 갯수는 여러개
+          if ($("tr").length > 2) {
+            //tr의 갯수가 2개 이상 일 때만 삭제
+            $(this).parent().parent().remove();
+          } else {
+            alert("더 이상 삭제 할 수 없습니다.");
+          }
+        });
+
+        // $(".addBtn").click(function () { //click 이벤트는 동적으로 생성된 태그에 대해서는 이벤트가 부여되지 않는다.
+        $("table").on("click", ".addBtn", function () {
+          //강제적으로 테이블에 있는 모든 .addBtn에 click이벤트를 부여했다. (on()사용)
+          //console.log($(this).parent().parent());
+          let copyTr = $(this).parent().parent(); //복사할 행을 copyTr할당
+          let newTr = copyTr.clone(); //copyTr 복제
+          clearContents($(newTr).children()); // input 태그의 내용을 지우기 위해 함수 호출
+          newTr.insertAfter($(copyTr)); //아래에 붙여넣기
+        });
+        // });
+
+        //tr이 실행될 때 마다 배열에 넣어서 전송
+        $(".send").click(function () {
+          let data = new Array();
+
+          //   //a[class~="flat"]
+          //   $("input[name~='prodName']").each(function (i, e) {
+          //     //input 태그에 type의 이름이 text를 포함한 것.
+          //     console.log($(e));
+          //     product.prodName = $(e).val();
+          //   });
+
+          //   $("input[name~='prodQty']").each(function (i, e) {
+          //     console.log($(e));
+          //   });
+
+          //   $("input[name~='prodPrice']").each(function (i, e) {
+          //     console.log($(e));
+          //   }); //이런식으로 접근하면 2차원 배열까지 생각해서 해야하기 때문에 어려워짐
+
+          $("tr").each(function (i, e) {
+            let product = new Object();
+            //행단위로 생각해서 짤 것
+            if (i > 0) {
+              let prodName = $(e).children().eq(0).children().val();
+              let prodQty = $(e).children().eq(1).children().val();
+              let prodPrice = $(e).children().eq(2).children().val();
+
+              product.prodName = prodName;
+              product.prodQty = prodQty;
+              product.prodPrice = prodPrice;
+
+              data.push(product);
+            }
+          });
+
+          console.log(data);
+          $("#json").html(JSON.stringify(data));
+        });
+      });
+
+      function clearContents(tdArr) {
+        $.each(tdArr, function (index, item) {
+          if (index < 3) {
+            $(item).children().val("");
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td>상품명</td>
+        <td>수량</td>
+        <td>가격</td>
+        <td>추가</td>
+        <td>삭제</td>
+      </tr>
+      <tr>
+        <td><input type="text" name="prodName" /></td>
+        <td><input type="text" name="prodQty" /></td>
+        <td><input type="text" name="prodPrice" /></td>
+        <td><button class="addBtn">+</button></td>
+        <td><button class="remBtn">-</button></td>
+      </tr>
+    </table>
+    <button class="send">전송</button>
+    <hr />
+    <div id="json"></div>
+  </body>
+</html>
