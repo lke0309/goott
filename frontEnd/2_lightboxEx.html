@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="dist/css/lightbox.min.css" type="text/css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="dist/js/lightbox.min.js"></script>
+    <title>jQuery plugin ex1-lightbox</title>
+    <script>
+      lightbox.option({
+        resizeDuration: 200,
+        wrapAround: true, //이미지가 계속 돌아가도록 (끝까지 가면 다시 0으로)
+        maxWidth: 400,
+      });
+    </script>
+  </head>
+  <body>
+    <a href="img/ramen.jpg" data-lightbox="image-1" data-title="라면">라면</a>
+    <a href="img/ramen.jpg" data-lightbox="image-1" data-title="라면"
+      ><img src="img/ramen.jpg" alt=""
+    /></a>
+
+    <div>
+      <a href="img/don.jpg" data-lightbox="images">돈까스</a>
+      <a href="img/hambuger.jpg" data-lightbox="images">햄버거3</a>
+      <a href="img/kimchi.jpg" data-lightbox="images">김치찌개</a>
+    </div>
+  </body>
+</html>

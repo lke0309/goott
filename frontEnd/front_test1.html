@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="slick/slick.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="slick/slick.min.js"></script>
+    <title>Document</title>
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .slider {
+        width: 50%;
+        margin: 100px auto;
+      }
+
+      .slick-slide {
+        margin: 0px 20px;
+      }
+
+      .slick-slide img {
+        width: 100%;
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        color: black;
+      }
+
+      .slick-slide {
+        transition: all ease-in-out 0.3s;
+        opacity: 0.2;
+      }
+
+      .slick-active {
+        opacity: 0.5;
+      }
+
+      .slick-current {
+        opacity: 1;
+      }
+      img {
+        width: 400px;
+        height: 300px;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $(".center").slick({
+          centerMode: true,
+          centerPadding: "60px",
+          slidesToShow: 3,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: "40px",
+                slidesToShow: 3,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: "40px",
+                slidesToShow: 1,
+              },
+            },
+          ],
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="center slider vertical-center">
+      <div><img src="img/jjajang.jpg" /></div>
+      <div><img src="img/hambuger.jpg" /></div>
+      <div><img src="img/ssal.jpg" /></div>
+      <div><img src="img/ramen.jpg" /></div>
+      <div><img src="img/don.jpg" /></div>
+      <div><img src="img/kimchi.jpg" /></div>
+      <div><img src="img/bude.jpg" /></div>
+    </div>
+  </body>
+</html>

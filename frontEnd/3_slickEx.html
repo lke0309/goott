@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="slick/slick.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="slick/slick.min.js"></script>
+    <title>jQuery plug-in Slick</title>
+    <script>
+      $(document).ready(function () {
+        $(".slider1").slick({
+          autoplay: true,
+          autoplaySpeed: 1000,
+        });
+      });
+    </script>
+    <style>
+      img {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider1">
+      <div><img src="img/jjajang.jpg" /></div>
+      <div><img src="img/hambuger.jpg" /></div>
+      <div><img src="img/ssal.jpg" /></div>
+    </div>
+  </body>
+</html>
