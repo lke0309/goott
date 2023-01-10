@@ -10,15 +10,46 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>mbn 뉴스기사를 xml로 받아와 parsing 해보자</title>
+    <title>
+      비동기 데이터 통신을 통해 mbn 뉴스기사를 xml로 받아와 parsing 해보자
+    </title>
     <script>
+      let items = null; //78번째 줄 쯤에서 값을 넣어주기때문에 지금은 null을 넣어줌
       $(function () {
-        xmlParsing(transData());
+        // xmlParsing(transData());
+        transData();
+
+        $("#findNews").keyup(function (e) {
+          //(e) : 이벤트가 일어난 정보를 가져오는 매개변수
+          if (e.keyCode == 13) {
+            //엔터키가 눌렸다면
+            searchNews($("#findNews").val());
+          }
+        });
       });
 
-      function xmlParsing(xmlDoc) {
-        let item = xmlDoc.getElementsByTagName("item");
-        console.log(items);
+      function searchNews(findItem) {
+        let isfind = false;
+        let findNews = `<div class="list-group">`; //뉴스를 검색하는(찾는) 대목
+        $.each(items, function (i, item) {
+          let title = $(item).children().eq(0).html();
+          title = title.replace("<![CDATA[", "");
+          title = title.replace("]]>", "");
+          let link = $(item).children().eq(1).html();
+          if (title.indexOf(findItem) != -1) {
+            // title에 findItem이 있다.
+            findNews += `<a href="${link}" class="list-group-item list-group-item-action">${title}</a>`;
+            isfind = true;
+          }
+        });
+        findNews += "</div>";
+
+        if (!isfind) {
+          //찾지 못했냐?라는 질문
+          alert("그런 뉴스 없습니다.");
+        } else {
+          $("#accordion").html(findNews);
+        }
       }
 
       function transData() {
@@ -31,7 +62,7 @@
           success: function (data) {
             //통신이 성공하면 수행할 함수(콜백 함수)
             console.log(data);
-            return data;
+            xmlParsing(data);
           },
           error: function () {
             //에러 났을 때
@@ -41,12 +72,71 @@
           },
         });
       }
+
+      function xmlParsing(xmlDoc) {
+        let channel = xmlDoc.getElementsByTagName("channel")[0];
+        items = channel.getElementsByTagName("item"); //배열
+        console.log(items);
+
+        let output = "";
+        $.each(items, function (i, news) {
+          let title = $(news).children().eq(0).html();
+          let description = $(news).children().eq(3).html();
+          console.log(title, description);
+          title = title.replace("<![CDATA[", "");
+          title = title.replace("]]>", "");
+          description = description.replace("<![CDATA[", "");
+          description = description.replace("]]>", "");
+
+          let link = $(news).children().eq(1).html();
+          let pubDate = $(news).children().eq(4).html();
+
+          output += `<div class="card"><div class="card-header"><a class="btn" data-bs-toggle="collapse" href="#news${i}">`;
+          output += `${title}`;
+          output += ` </a></div><div id="news${i}" class="collapse" data-bs-parent="#accordion"><div class="card-body">`;
+          output += `<div class='desc'><a href ='${link}'>${description}</a></div><div class='pubDate'>`;
+          output += `${pubDate}</div>`;
+          output += `</div></div></div>`;
+        });
+
+        $("#accordion").html(output);
+      }
     </script>
+    <style>
+      .card-body {
+        position: relative;
+      }
+      .card-body a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+      }
+      .desc {
+        padding: 8px;
+      }
+      .pubDate {
+        color: crimson;
+        position: absolute;
+        margin-top: 10px;
+        bottom: 5px;
+        right: 5px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>MBN 연예 뉴스</h1>
-      <div id="output"></div>
+
+      <div class="mb-3 mt-3">
+        <input
+          type="text"
+          class="form-control"
+          id="findNews"
+          placeholder="검색할 뉴스쓰시고 엔터 누르세요"
+        />
+      </div>
+      <div id="accordion"></div>
     </div>
   </body>
 </html>
