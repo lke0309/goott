@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비동기 전송방식으로 json을 가져와 파싱하여 출력하기(날씨정보)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6e89426ceab19aa16b8bd9f85aeb343c"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e89426ceab19aa16b8bd9f85aeb343c"
+    ></script>
+    <script>
+      // // db6e162d61e9fc69e890db82485caa12
+      //키값
+
+      let baseUrl =
+        "http://api.openweathermap.org/data/2.5/weather?&appid=db6e162d61e9fc69e890db82485caa12";
+
+      $(function () {
+        getWeatherData("seoul", "metric"); //날씨 정보 얻어오기 (openweather 서버의 api 요청)
+        // 값이 바뀔 때는 다시 요청해야하기 때문에  다시 요청할 수 있도록  함수로 만들자
+
+        $("#citySelect").change(function () {
+          //유저가 도시를 선택함
+          let radios = document.getElementsByName("units"); //라디오 가져옴
+          let unit = "";
+          for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked == true) {
+              unit = radios[i].value;
+            }
+          }
+          getWeatherData($(this).val(), unit);
+          //   getWeatherData($(this).val(),$("input[name~='units']:checked").val()); //위에꺼랑 동일함
+        });
+
+        // let radios =document.getElementsByName("units"); //아래랑 같은 뜻
+        $("input[name~='units']").change(function () {
+          //유저가 온도단위를 선택함
+          // input태그이면서 name속성이 units인것// 위에꺼랑 같은 뜻
+          console.log($(this).val());
+
+          getWeatherData($("#citySelect").val(), $(this).val());
+        });
+      });
+
+      function getWeatherData(cityName, units) {
+        //유저가 선택한 도시를 받음
+        //ajax 로 먼저 얻어오기 함수
+        let url = baseUrl + "&q=" + cityName + "&units=" + units;
+
+        console.log(url);
+
+        $.ajax({
+          //ajax: jQuery에서 나타낸 XMLHttpRequest. = xml파일 달라고 하는 구문
+          url: url, //데이터가 수송신될 서버의 주소
+          type: "GET", //통신 방식(get, post, put, delete)
+          dataType: "json", //수신받을 데이터 타입(MINE TYPE으로 넣어야함)
+          async: false, //동기 통신방식으로 하겠다.(디폴트값은 원래  true이다.)
+          success: function (data) {
+            //통신이 성공하면 수행할 함수(콜백 함수)
+            parsingJson(data);
+          },
+        });
+      }
+
+      function parsingJson(json) {
+        //parsing 해서 출력하는 함수
+        let lat = json.coord.lat;
+        let lon = json.coord.lon;
+        console.log(lat, lon);
+
+        let cityName = json.name;
+        $("#cityName").html(cityName);
+
+        let dt = json.dt;
+        let pubDate = new Date(dt);
+        $("#pubDate").html(pubDate.toLocaleString());
+
+        let weather = json.weather[0];
+        let description = weather.description;
+        let weatherIcon = weather.icon;
+
+        let feelsLikeTemp = json.main.feels_like;
+
+        let output = `<div><img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" />${description}</div>`;
+        $("#detailWeather").html(output);
+
+        $(".title").html(
+          `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" />${description}`
+        );
+        outputMap(lat, lon, weatherIcon, description);
+      }
+
+      //지도까지 출력하는 함수
+      function outputMap(lat, lon, weatherIcon, description) {
+        let container = document.getElementsByClassName("map")[0]; //지도를 그릴 영역
+        let options = {
+          //지도를 생성할 때 필요한 기본 옵션
+          center: new kakao.maps.LatLng(lat, lon), //지도의 중심 좌표값
+          level: 3, //확대 축소 레벨
+        };
+
+        let map = new kakao.maps.Map(container, options); // 지도객체 생성 및 그려지기
+
+        let imageSrc = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`, // 마커이미지의 주소였지만 웨더 아이콘으로 변경함
+          imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+          imageOption = { offset: new kakao.maps.Point(32, 80) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        let markerImage = new kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize,
+            imageOption
+          ),
+          markerPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치입니다
+
+        // 마커를 생성합니다
+        let marker = new kakao.maps.Marker({
+          position: markerPosition,
+          image: markerImage, // 마커이미지 설정
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        let content = `<div class="customoverlay"><span class="title">${description}</span></div>`;
+
+        // 커스텀 오버레이가 표시될 위치입니다
+        let position = new kakao.maps.LatLng(lat, lon);
+
+        // 커스텀 오버레이를 생성합니다
+        let customOverlay = new kakao.maps.CustomOverlay({
+          map: map,
+          position: position,
+          content: content,
+          yAnchor: 1,
+        });
+      }
+    </script>
+    <style>
+      .radios {
+        float: left;
+        margin-left: 15px;
+      }
+      .map {
+        clear: both;
+        width: 640px;
+        height: 480px;
+      }
+      .customoverlay {
+        background-color: white;
+        border: 1px solid hotpink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>현재날씨 정보</h1>
+
+      <div class="query">
+        <select class="form-select" id="citySelect">
+          <option value="seoul">서울</option>
+          <option value="jeju">제주</option>
+          <option value="incheon">인천</option>
+          <option value="daejeon">대전</option>
+          <option value="gwangju">광주</option>
+          <option value="busan">부산</option>
+        </select>
+
+        <div class="form-check radios">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="radio1"
+            name="units"
+            value="metric"
+            checked
+          />섭씨
+        </div>
+
+        <div class="form-check radios">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="radio2"
+            name="units"
+            value="imperial"
+          />화씨
+        </div>
+
+        <div class="form-check radios">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="radio3"
+            name="units"
+            value="standard"
+          />켈빈
+        </div>
+      </div>
+
+      <div class="map"></div>
+      <div class="weather Info">
+        <h4><span id="cityName"></span>의 날씨정보</h4>
+        <h6>pubDate: <span id="pubDate"></span></h6>
+        <div id="detailWeather"></div>
+      </div>
+    </div>
+  </body>
+</html>
