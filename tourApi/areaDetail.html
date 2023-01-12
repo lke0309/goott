@@ -17,10 +17,72 @@
         if (contentId == null) {
           location.href = "areaBasedList.html";
         } else {
-          getTourData(contentId);
+          getTourData(contentId); //contentId의 추가 정보
+          getAdditionalImage(contentId); //contentId의 추가 이미지 데니터를 호출하기 위한 함수
         }
       });
 
+      //관광지의 추가 이미지를 얻어오기 위한 함수
+      function getAdditionalImage(contentId) {
+        let url =
+          "https://apis.data.go.kr/B551011/KorService/detailImage?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentId=" +
+          contentId +
+          "&imageYN=Y&subImageYN=Y";
+
+        $(".loading").show();
+
+        $.ajax({
+          //ajax: jQuery에서 나타낸 XMLHttpRequest. = xml파일 달라고 하는 구문
+          url: url, //데이터가 수송신될 서버의 주소
+          type: "GET", //통신 방식(get, post, put, delete)
+          dataType: "json", //수신받을 데이터 타입(MINE TYPE으로 넣어야함)
+          async: false, //동기 통신방식으로 하겠다.(디폴트값은 원래  true이다.)
+          success: function (data) {
+            //통신이 성공하면 수행할 함수(콜백 함수)
+            // console.log(data);
+            console.log(data);
+            makeImgSlider(data); //complete는 파일이 왔는지 안왔는지 상관 안하기 때문에 에러가 잘 안뜸 그래서 success에 적어줌.
+          },
+          complete: function () {
+            $(".loading").hide();
+          },
+        });
+        function makeImgSlider(data) {
+          //이너 펑션 - 단점: getAdditionalImage의 함수에 의존도가 높아져서 겉 함수를 수정을 하게 되면 makeImgSlider이 함수도 같이 수정해야함. (응집도는 높이되, 결합도=의존도는 낮추는게 좋음.)
+
+          if (data.response.body.items != "") {
+            //추가 이미지가 있다.
+            let output = `<div class="carousel-indicators">`;
+            for (let i in data.response.body.items.item) {
+              if (i == 0) {
+                output += `<button type="button" data-bs-target="#demo" data-bs-slide-to="${i}" class="active"></button>`;
+              } else {
+                output += `<button type="button" data-bs-target="#demo" data-bs-slide-to="${i}"></button>`;
+              }
+            }
+            output += `</div> <div class="carousel-inner">`;
+
+            $.each(data.response.body.items.item, function (i, addImg) {
+              if (i == 0) {
+                output += `<div class="carousel-item active">`;
+              } else {
+                output += `<div class="carousel-item">`;
+              }
+
+              output += `<img src= "${addImg.originimgurl}" alt="${addImg.contentid}" class="d-block w-100"></div>`;
+            });
+            output += `</div>`;
+            output += `<button class="carousel-control-prev" type="button" data-bs-target="#demo"data-bs-slide="prev"><spanclass="carousel-control-prev-icon"></span></button><button class="carousel-control-next" type="button"data-bs-target="#demo" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>`;
+
+            $("#demo").html(output);
+          } else {
+            //추가 이미지가 없다.
+            $("#demo").remove(); //demo 태그를 삭제해주므로서 아래있던 태그를 위로 올려주게됨.
+          }
+        }
+      }
+
+      //contentId로 기본정보를 얻어오기 위한 함수
       function getTourData(contentId) {
         let baseUrl = `http://apis.data.go.kr/B551011/KorService/detailCommon?MobileOS=ETC&MobileApp=APPTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentId=${contentId}&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`;
 
@@ -36,6 +98,7 @@
             //통신이 성공하면 수행할 함수(콜백 함수)
             // console.log(data);
             console.log(data);
+            // makeImgSlider(); //추가 이미지가 없기 때문에 data안들고 가도됨.
           },
           complete: function () {
             $(".loading").hide();
@@ -75,6 +138,11 @@
     </nav>
 
     <div class="container mt-5"></div>
+
+    <div>
+      <!-- Carousel -->
+      <div id="demo" class="carousel slide" data-bs-ride="carousel"></div>
+    </div>
 
     <div class="mt-5 p-4 bg-dark text-white text-center">
       <p>Copyright 2023.gootClass6 all right reserved.</p>

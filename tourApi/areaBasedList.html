@@ -12,13 +12,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+      let pageNo = 778; //현재 페이지 번호를 저장할 변수//778페이지로해서 뒤에 남은 썸네일 잘 나오는지 확인하려고
+      //url안에 &pageNo=i 를 추가하고
+      //i번째 페이지를 출력되게 함.
+      //단, 마직막 페이지가 되면, 마지막 페이지입니다, 또는 버튼을 없앤다
+      let numOfRows = 10; //10개씩 보여주겠다.
+      let totalCount = 0;
+      let totalPage = 0;
+
       $(function () {
         getTourData();
+
+        if (numOfRows != 0) {
+          if (totalCount % numOfRows == 0) {
+            totalPage = totalCount / numOfRows;
+          } else {
+            totalPage = totalCount / numOfRows + 1;
+          }
+        } else {
+          numOfRows = 10;
+        }
+
+        $("#morePage").click(function () {
+          //다음 페이지로 이동 했을 때
+
+          if (pageNo < totalPage) {
+            pageNo++; //1페이지 증가
+            console.log("pageNo:" + pageNo + ",toalPage:" + totalPage);
+            getTourData();
+          } else if (pageNo == totalPage) {
+            alert("마지막 페이지 입니다!");
+            $(this).attr("disabled", true); //버튼 비활성화
+            //prop: 속성부여 ,  attr과 같은것
+          }
+        });
       });
 
       function getTourData() {
         let baseUrl =
-          "http://apis.data.go.kr/B551011/KorService/areaBasedList?MobileOS=ETC&MobileApp=APPTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&areaCode=1";
+          "http://apis.data.go.kr/B551011/KorService/areaBasedList?MobileOS=ETC&MobileApp=APPTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&areaCode=1&pageNo=" +
+          pageNo;
+        //  + "&numOfRows=20";
 
         $(".loading").show();
 
@@ -30,7 +64,7 @@
           async: false, //동기 통신방식으로 하겠다.(디폴트값은 원래  true이다.) false이면 비동기
           success: function (data) {
             //통신이 성공하면 수행할 함수(콜백 함수)
-            // console.log(data);
+            console.log(data);
             parsing(data);
           },
           complete: function () {
@@ -42,11 +76,14 @@
       function parsing(json) {
         let tourAr = json.response.body.items.item;
         // console.log(tourAr);
+        totalCount = Number(json.response.body.totalCount);
+        numOfRows = Number(json.response.body.numOfRows);
+
         let output = `<div class="list-group">`;
 
         $.each(tourAr, function (i, tour) {
           //   console.log(tour);
-          output += `<a href="areaDetail.html?contentid=${tour.contentid}" class="list-group-item list-group-item-action tour">`;
+          output += `<a href="areaDetail.html?contentid=${tour.contentid}" class="list-group-item list-group-item-action tour">`; //프라이머리 키
           if (tour.firstimage2 == "" || tour.firstimage2 == null) {
             //이미지가 없을경우
             output += `<div class='tourThumbnail'><img src="img/noimage.png"/></div>`;
@@ -61,7 +98,7 @@
 
         output += `</div>`;
 
-        $("#tourInfo").html(output);
+        $("#tourInfo").append(output); //append: 끝에추가
       }
     </script>
     <style>
@@ -117,8 +154,17 @@
     </nav>
 
     <div class="container mt-5">
-      <div id="tourInfo">
+      <div class="loading">
         <img src="img/loading.gif" alt="" />
+      </div>
+      <div id="tourInfo"></div>
+    </div>
+
+    <div>
+      <div class="d-grid">
+        <button type="button" id="morePage" class="btn btn-primary btn-block">
+          다음 페이지로
+        </button>
       </div>
     </div>
 
