@@ -84,6 +84,7 @@
         $.each(tourAr, function (i, tour) {
           //   console.log(tour);
           output += `<a href="areaDetail.html?contentid=${tour.contentid}" class="list-group-item list-group-item-action tour">`; //프라이머리 키
+          //컨텐츠 아이디 값을 쿼리스트링으로 넣어줌
           if (tour.firstimage2 == "" || tour.firstimage2 == null) {
             //이미지가 없을경우
             output += `<div class='tourThumbnail'><img src="img/noimage.png"/></div>`;

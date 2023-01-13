@@ -27,19 +27,83 @@
     />
     <link rel="stylesheet" href="assets/css/animated_culture.css" />
     <link rel="stylesheet" href="assets/css/owl_culture.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script>
+      // let selectValue = ""; //clickSearch()에서 클릭을 해야만 실행되기때문에 전역변수로 빈값을 먼저 넣어줘서 if문이 돌아갔을 때 오류가 안뜨게 함.
+
       $(function () {
         //온로드
         cultureData();
       });
 
+      //ajax
       function cultureData() {
-        //서비스 분류코드 조회 보기
-        let cultureDataUrl =
-          "https://apis.data.go.kr/B551011/KorService/categoryCode?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentTypeId=14&cat1=A02&cat2=A0206";
+        let cultureUrl =
+          "http://apis.data.go.kr/B551011/KorService/areaBasedList?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentTypeId=14";
+
+        $.ajax({
+          url: cultureUrl,
+          type: "GET",
+          dataType: "json",
+          async: false,
+
+          success: function (data) {
+            //통신 성공
+            console.log(data);
+            parsing(data);
+          },
+          complete: function () {
+            //통신 끝
+          },
+        });
+      }
+
+      // function clickSearch() {
+      //   selectValue = $(".selectTag").val();
+      //   console.log(selectValue);
+      // }
+
+      // //선택한 selectValue의 값을 url의 마지막 cat3에 넣어준다.
+      // let cat3 = "&cat3=";
+      // if (selectValue == "A02060100") {
+      //   cat3 += "A02060100";
+      //   console.log(cultureDataUrl);
+      // } else {
+      // }
+
+      function parsing(json) {
+        let cultureArr = json.response.body.items.item;
+        console.log(cultureArr);
+
+        let card = `<div class="col-lg-12">`;
+        $.each(cultureArr, function (i, cultureArrData) {
+          console.log(cultureArrData);
+          // card += `<a href= "contact.html"?contentid=${cultureArrData.contentid}>`;
+          card += `<div class="listing-item"><div class="left-image">`;
+          if (
+            cultureArrData.firstimage == "" ||
+            cultureArrData.firstimage == null
+          ) {
+            //이미지 없을 때
+            card += `<a href="ditail.html?contentid=${cultureArrData.contentid}"><img src="img/noimage.png" alt="" class="cardImage"/></a>`;
+          } else {
+            //이미지 있을 때
+            card += `<a href="ditail.html?contentid=${cultureArrData.contentid}"><img src='${cultureArrData.firstimage}' alt="" class="cardImage"/></a>`;
+          }
+          card += `<div class="hover-content"><div class="main-white-button"><a href="ditail.html?contentid=${cultureArrData.contentid}"><i class="fa fa-eye"></i> Contact Now</a></div></div></div>`;
+
+          card += `<div class="right-content align-self-center"><a href="ditail.html?contentid=${cultureArrData.contentid}"><h4>${cultureArrData.title}</h4></a><h6>----------------------------------</h6><span class="price"><div class="icon"><img src="iconImg/visitIcon.png" alt="" /></div>${cultureArrData.addr1}</span></div></div></div>`;
+        });
+        card += `</div>`;
+        $("#cardArea").html(card);
       }
     </script>
+    <style>
+      .cardImage {
+        width: 500px;
+      }
+    </style>
   </head>
 
   <body>
@@ -90,7 +154,7 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="top-text header-text">
-              <h6>문화시설 정보</h6>
+              <h6>Cultural facility information</h6>
               <h2>문화시설</h2>
             </div>
           </div>
@@ -241,16 +305,39 @@
                     </div>
                     <!-- 좌측 네비바 end-->
                   </div>
+
+                  <!-- 셀렉트 태그 -->
                   <div class="col-lg-9">
+                    <div>
+                      <select name="" id="" class="selectTag">
+                        <!-- <option value="">---전체---</option> -->
+                        <option value="A02060100">박물관</option>
+                        <option value="A02060200">기념관</option>
+                        <option value="A02060300">전시관</option>
+                        <option value="A02060400">컨벤션센터</option>
+                        <option value="A02060500">미술관/화랑</option>
+                        <option value="A02060600">공연장</option>
+                        <option value="A02060700">문화원</option>
+                        <option value="A02060800">외국문화원</option>
+                        <option value="A02060900">도서관</option>
+                        <option value="A02061000">대형서점</option>
+                      </select>
+                      <input
+                        type="button"
+                        value="검색"
+                        onclick="clickSearch();"
+                      />
+                    </div>
+
                     <ul class="nacc">
                       <!-- first category listing of items -->
                       <li class="active">
                         <div>
                           <div class="col-lg-12">
                             <div class="item">
-                              <div class="row">
+                              <div class="row" id="cardArea">
                                 <!-- 카드 start -->
-                                <div class="col-lg-12">
+                                <!-- <div class="col-lg-12">
                                   <div class="listing-item">
                                     <div class="left-image">
                                       <a href="#"
@@ -267,13 +354,14 @@
                                         </div>
                                       </div>
                                     </div>
+                                     카드 오른쪽 설명란 start 
                                     <div
                                       class="right-content align-self-center"
                                     >
-                                      <a href="#"
-                                        ><h4>Sunshine Paradise Apartment</h4></a
-                                      >
-                                      <h6>by: Real ESTATE Agent</h6>
+                                      <a href="#"><h4>소분류>제목</h4></a>
+                                      <h6>
+                                        ------------------------------------------
+                                      </h6>
                                       <span class="price"
                                         ><div class="icon">
                                           <img
@@ -283,23 +371,9 @@
                                         </div>
                                         $600 / month included tax</span
                                       >
-                                      <span class="details"
-                                        >Details: <em>860 sq ft</em></span
-                                      >
-                                      <span class="info"
-                                        ><img
-                                          src="assets/images/listing-icon-02.png"
-                                          alt=""
-                                        />
-                                        2 Bedrooms<br /><img
-                                          src="assets/images/listing-icon-03.png"
-                                          alt=""
-                                        />
-                                        3 Bathrooms</span
-                                      >
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
                               </div>
                             </div>
                           </div>

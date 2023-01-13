@@ -1676,7 +1676,7 @@ Listing Page
   font-size: 15px;
   border-radius: 7px;
   background-color: #c2cdd3;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   height: 126px;
   text-align: left;
   padding: 0px 15px;
@@ -1684,6 +1684,11 @@ Listing Page
   cursor: pointer;
   position: relative;
   transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* 셀렉트태그  */
+.listing-page .selectTag {
+  margin-bottom: 25px;
 }
 
 .listing-page .naccs .menu div.active,
@@ -1799,7 +1804,7 @@ Listing Page
 .listing-page .item .right-content span.price .icon {
   width: 30px;
   height: 30px;
-  background-color: #8d99af;
+  background-color: #b1c0c9;
   border-radius: 50%;
   text-align: center;
   line-height: 28px;
