@@ -86,14 +86,14 @@
             cultureArrData.firstimage == null
           ) {
             //이미지 없을 때
-            card += `<a href="ditail.html?contentid=${cultureArrData.contentid}"><img src="img/noimage.png" alt="" class="cardImage"/></a>`;
+            card += `<a href="culture_detail.html?contentid=${cultureArrData.contentid}"><img src="img/noimage.png" alt="" class="cardImage"/></a>`;
           } else {
             //이미지 있을 때
-            card += `<a href="ditail.html?contentid=${cultureArrData.contentid}"><img src='${cultureArrData.firstimage}' alt="" class="cardImage"/></a>`;
+            card += `<a href="culture_detail.html?contentid=${cultureArrData.contentid}"><img src='${cultureArrData.firstimage}' alt="" class="cardImage"/></a>`;
           }
-          card += `<div class="hover-content"><div class="main-white-button"><a href="ditail.html?contentid=${cultureArrData.contentid}"><i class="fa fa-eye"></i> Contact Now</a></div></div></div>`;
+          card += `<div class="hover-content"><div class="main-white-button"><a href="culture_detail.html?contentid=${cultureArrData.contentid}"><i class="fa fa-eye"></i> Contact Now</a></div></div></div>`;
 
-          card += `<div class="right-content align-self-center"><a href="ditail.html?contentid=${cultureArrData.contentid}"><h4>${cultureArrData.title}</h4></a><h6>----------------------------------</h6><span class="price"><div class="icon"><img src="iconImg/visitIcon.png" alt="" /></div>${cultureArrData.addr1}</span></div></div></div>`;
+          card += `<div class="right-content align-self-center"><a href="culture_detail.html?contentid=${cultureArrData.contentid}"><h4>${cultureArrData.title}</h4></a><h6>----------------------------------</h6><span class="price"><div class="icon"><img src="iconImg/visitIcon.png" alt="" /></div>${cultureArrData.addr1}</span></div></div></div>`;
         });
         card += `</div>`;
         $("#cardArea").html(card);
