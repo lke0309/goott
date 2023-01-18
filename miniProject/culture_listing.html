@@ -32,15 +32,43 @@
     <script>
       // let selectValue = ""; //clickSearch()에서 클릭을 해야만 실행되기때문에 전역변수로 빈값을 먼저 넣어줘서 if문이 돌아갔을 때 오류가 안뜨게 함.
 
+      let pageNumber = 1;
+      let totalPage = 0;
+      let totalCard = 0;
+      let numOfRows = 10;
+
       $(function () {
         //온로드
         cultureData();
+
+        if (numOfRows != 0) {
+          if (totalCard % numOfRows == 0) {
+            totalPage = totalCard / numOfRows;
+          } else {
+            totalPage = totalCard / numOfRows + 1;
+          }
+        } else {
+          numOfRows = 10;
+        }
+
+        $("#nextPage").click(function () {
+          if (pageNumber < totalPage) {
+            pageNumber++; //1페이지 증가
+            console.log(pageNumber);
+            cultureData();
+          } else if (pageNumber == totalPage) {
+            alert("마지막 페이지 입니다!");
+            $(this).attr("disabled", true); //버튼 비활성화
+            //prop: 속성부여 ,  attr과 같은것
+          }
+        });
       });
 
       //ajax
       function cultureData() {
         let cultureUrl =
-          "http://apis.data.go.kr/B551011/KorService/areaBasedList?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentTypeId=14";
+          "http://apis.data.go.kr/B551011/KorService/areaBasedList?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentTypeId=14&pageNo=" +
+          pageNumber;
 
         $.ajax({
           url: cultureUrl,
@@ -59,44 +87,36 @@
         });
       }
 
-      // function clickSearch() {
-      //   selectValue = $(".selectTag").val();
-      //   console.log(selectValue);
-      // }
-
-      // //선택한 selectValue의 값을 url의 마지막 cat3에 넣어준다.
-      // let cat3 = "&cat3=";
-      // if (selectValue == "A02060100") {
-      //   cat3 += "A02060100";
-      //   console.log(cultureDataUrl);
-      // } else {
-      // }
-
       function parsing(json) {
         let cultureArr = json.response.body.items.item;
+        totalCard = Number(json.response.body.totalCount);
         console.log(cultureArr);
 
-        let card = `<div class="col-lg-12">`;
+        let card = `<div class="container mt-3">`;
         $.each(cultureArr, function (i, cultureArrData) {
           console.log(cultureArrData);
           // card += `<a href= "contact.html"?contentid=${cultureArrData.contentid}>`;
-          card += `<div class="listing-item"><div class="left-image">`;
+          card += `<a href="culture_detail.html?contentid=${cultureArrData.contentid}"><div class="card img-fluid " >`;
           if (
             cultureArrData.firstimage == "" ||
             cultureArrData.firstimage == null
           ) {
             //이미지 없을 때
-            card += `<a href="culture_detail.html?contentid=${cultureArrData.contentid}"><img src="img/noimage.png" alt="" class="cardImage"/></a>`;
+            card += `<img class="card-img-top cardImage" src="img/noimage.png"  style="width:100%">`;
           } else {
             //이미지 있을 때
-            card += `<a href="culture_detail.html?contentid=${cultureArrData.contentid}"><img src='${cultureArrData.firstimage}' alt="" class="cardImage"/></a>`;
+            card += `<img class="card-img-top cardImage" src='${cultureArrData.firstimage}'  style="width:100%">`;
           }
-          card += `<div class="hover-content"><div class="main-white-button"><a href="culture_detail.html?contentid=${cultureArrData.contentid}"><i class="fa fa-eye"></i> Contact Now</a></div></div></div>`;
+          card += `<div class="card-img-overlay"><span class="heartBtn"><i class="fa-solid fa-heart" onclick="heart();"></i></span></div>`;
 
-          card += `<div class="right-content align-self-center"><a href="culture_detail.html?contentid=${cultureArrData.contentid}"><h4>${cultureArrData.title}</h4></a><h6>----------------------------------</h6><span class="price"><div class="icon"><img src="iconImg/visitIcon.png" alt="" /></div>${cultureArrData.addr1}</span></div></div></div>`;
+          card += `<div class=" align-self-center card-text"><b>${cultureArrData.title}</b><span class="price"><div class="mapIcon"><img src="iconImg/visitIcon.png" alt="" /></div>${cultureArrData.addr1}</span></div></div></a>`;
         });
         card += `</div>`;
-        $("#cardArea").html(card);
+
+        $("#cardArea").append(card); //append: 끝에 카드 추가
+      }
+      function heart() {
+        $(".fa-heart").css("color", "red");
       }
     </script>
     <style>
@@ -108,11 +128,53 @@
         font-style: normal;
       }
       .cardImage {
-        width: 500px;
+        max-width: 100%;
+        max-height: 100%;
       }
 
       * {
         font-family: "NanumSquareNeo-Variable";
+      }
+      a {
+        color: black;
+      }
+      a:hover {
+        color: black;
+      }
+      .mt-3 {
+        display: flex;
+        /* 가로 배치 */
+        flex-wrap: wrap;
+        /* 부모요소의 width 값만큼 배치 */
+        justify-content: space-around;
+        /* 컨텐으의 사이 간격을 줌 */
+        width: 130%;
+      }
+      .img-fluid {
+        margin-bottom: 10%;
+        width: 425px;
+      }
+      li.active {
+        width: 1200px;
+      }
+      .card-text {
+        text-align: center;
+        padding: 15px;
+      }
+      .mapIcon {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+      }
+      .price {
+        display: flex;
+      }
+      b {
+        font-size: 19px;
+      }
+      .heartBtn {
+        z-index: 1;
+        width: 20%;
       }
     </style>
   </head>
@@ -400,6 +462,14 @@
       </div>
     </div>
 
+    <div>
+      <div class="d-grid">
+        <button type="button" id="nextPage" class="btn btn-primary btn-block">
+          더보기
+        </button>
+      </div>
+    </div>
+
     <!-- 공통 푸터 -->
     <footer>
       <div class="container">
@@ -479,5 +549,9 @@
     <script src="assets/js/imagesloaded.js"></script>
     <script src="assets/js/custom.js"></script>
     <!-- <script src="font.css"></script> -->
+    <script
+      src="https://kit.fontawesome.com/9f33808b48.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
