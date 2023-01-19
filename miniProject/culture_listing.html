@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="assets/css/owl_culture.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
       // let selectValue = ""; //clickSearch()에서 클릭을 해야만 실행되기때문에 전역변수로 빈값을 먼저 넣어줘서 if문이 돌아갔을 때 오류가 안뜨게 함.
 
@@ -147,7 +153,7 @@
         flex-wrap: wrap;
         /* 부모요소의 width 값만큼 배치 */
         justify-content: space-around;
-        /* 컨텐으의 사이 간격을 줌 */
+        /* 컨텐ㅊㅡ의 사이 간격을 줌 */
         width: 130%;
       }
       .img-fluid {
@@ -175,6 +181,26 @@
       .heartBtn {
         z-index: 1;
         width: 20%;
+      }
+      .navIcon {
+        width: 25px;
+        height: 25px;
+      }
+      .square {
+        background-color: #c2cdd3;
+        width: 200px;
+        height: 65px;
+        line-height: 4;
+        text-align: center;
+        border-radius: 7px;
+        margin-bottom: 15px;
+      }
+
+      .iconBack {
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
       }
     </style>
   </head>
@@ -235,6 +261,176 @@
       </div>
     </div>
 
+    <div class="offcanvas offcanvas-start" id="demo">
+      <div class="offcanvas-header">
+        <h1 class="offcanvas-title">category</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="col-lg-3">
+          <!-- 좌측 네비바 start-->
+          <div class="menu">
+            <!-- 네비 홈 -->
+            <div class="first-thumb">
+              <a href="index.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-01.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  홈
+                </div>
+              </a>
+            </div>
+            <!-- 네비 관광지 -->
+            <div>
+              <a href="visit_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-02.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  관광지
+                </div>
+              </a>
+            </div>
+            <!-- 네비 문화시설 -->
+            <div class="active">
+              <a href="culture_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  문화시설
+                </div>
+              </a>
+            </div>
+            <!-- 네비 축제공연행사 -->
+            <div>
+              <a href="party_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  축제공연행사
+                </div>
+              </a>
+            </div>
+            <!-- 네비 여행코스 -->
+            <div>
+              <a href="travel_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  여행코스
+                </div>
+              </a>
+            </div>
+            <!-- 네비 레포츠 -->
+            <div>
+              <a href="leports_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  레포츠
+                </div>
+              </a>
+            </div>
+            <!-- 네비 숙박 -->
+            <div>
+              <a href="stay_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  숙박
+                </div>
+              </a>
+            </div>
+            <!-- 네비 쇼핑 -->
+            <div>
+              <a href="shopping_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  쇼핑
+                </div>
+              </a>
+            </div>
+            <!-- 네비 음식점 -->
+            <div>
+              <a href="food_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-03.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  음식점
+                </div>
+              </a>
+            </div>
+            <!-- 네비 찜 -->
+            <div class="last-thumb">
+              <a href="wish_listing.html">
+                <div class="thumb square">
+                  <span class="iconBack"
+                    ><img
+                      src="assets/images/search-icon-04.png"
+                      alt=""
+                      class="navIcon"
+                  /></span>
+                  찜
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- 좌측 네비바 end-->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt-3">
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#demo"
+      >
+        Open Offcanvas Sidebar
+      </button>
+    </div>
+
     <div class="listing-page">
       <div class="container">
         <div class="row">
@@ -242,143 +438,6 @@
             <div class="naccs">
               <div class="grid">
                 <div class="row">
-                  <div class="col-lg-3">
-                    <!-- 좌측 네비바 start-->
-                    <div class="menu">
-                      <!-- 네비 홈 -->
-                      <div class="first-thumb">
-                        <a href="index.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-01.png"
-                                alt=""
-                            /></span>
-                            홈
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 관광지 -->
-                      <div>
-                        <a href="visit_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-02.png"
-                                alt=""
-                            /></span>
-                            관광지
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 문화시설 -->
-                      <div class="active">
-                        <a href="culture_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            문화시설
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 축제공연행사 -->
-                      <div>
-                        <a href="party_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            축제공연행사
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 여행코스 -->
-                      <div>
-                        <a href="travel_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            여행코스
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 레포츠 -->
-                      <div>
-                        <a href="leports_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            레포츠
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 숙박 -->
-                      <div>
-                        <a href="stay_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            숙박
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 쇼핑 -->
-                      <div>
-                        <a href="shopping_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            쇼핑
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 음식점 -->
-                      <div>
-                        <a href="food_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-03.png"
-                                alt=""
-                            /></span>
-                            음식점
-                          </div>
-                        </a>
-                      </div>
-                      <!-- 네비 찜 -->
-                      <div class="last-thumb">
-                        <a href="wish_listing.html">
-                          <div class="thumb">
-                            <span class="icon"
-                              ><img
-                                src="assets/images/search-icon-04.png"
-                                alt=""
-                            /></span>
-                            찜
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <!-- 좌측 네비바 end-->
-                  </div>
-
                   <!-- 셀렉트 태그 -->
                   <div class="col-lg-9">
                     <div>
