@@ -100,10 +100,13 @@ drop table member01;
 select * from member01;
  
  
- 
 --(5) rename to로 테이블 이름 변경하기
 rename member01 to member;
 select * from member01;
  
+
+
+----------------------------------------------------------------------------
+
 
  

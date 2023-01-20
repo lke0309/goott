@@ -133,6 +133,11 @@
         font-weight: normal;
         font-style: normal;
       }
+
+      .col-lg-9,
+      .row {
+        width: 100%;
+      }
       .cardImage {
         max-width: 100%;
         max-height: 100%;
@@ -147,18 +152,20 @@
       a:hover {
         color: black;
       }
+
       .mt-3 {
         display: flex;
         /* 가로 배치 */
         flex-wrap: wrap;
         /* 부모요소의 width 값만큼 배치 */
         justify-content: space-around;
-        /* 컨텐ㅊㅡ의 사이 간격을 줌 */
-        width: 130%;
+        /* 컨텐츠의 사이 간격을 줌 */
+        width: 100%;
       }
       .img-fluid {
+        /* 카드 사이즈 */
         margin-bottom: 10%;
-        width: 425px;
+        width: 300px;
       }
       li.active {
         width: 1200px;
