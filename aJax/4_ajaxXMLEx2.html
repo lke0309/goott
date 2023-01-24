@@ -20,6 +20,7 @@
         transData();
 
         $("#findNews").keyup(function (e) {
+          //뉴스를 검색하는 대목
           //(e) : 이벤트가 일어난 정보를 가져오는 매개변수
           if (e.keyCode == 13) {
             //엔터키가 눌렸다면
@@ -30,7 +31,7 @@
 
       function searchNews(findItem) {
         let isfind = false;
-        let findNews = `<div class="list-group">`; //뉴스를 검색하는(찾는) 대목
+        let findNews = `<div class="list-group">`; //뉴스를 찾는 대목
         $.each(items, function (i, item) {
           let title = $(item).children().eq(0).html();
           title = title.replace("<![CDATA[", "");

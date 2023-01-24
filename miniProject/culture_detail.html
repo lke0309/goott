@@ -74,9 +74,8 @@
         }
       });
 
-      //ajax
+      //소개정보조회
       function introduction(contentId) {
-        //소개정보조회 url
         let introductionUrl =
           "http://apis.data.go.kr/B551011/KorService/detailIntro?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&contentTypeId=14&contentId=" +
           contentId;
@@ -149,9 +148,8 @@
         listWriting(selectedValue);
       }
 
-      //ajax
+      //공통정보조회
       function common(contentId) {
-        //공통정보조회 url
         let commonUrl =
           "http://apis.data.go.kr/B551011/KorService/detailCommon?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&defaultYN=Y&addrinfoYN=Y&overviewYN=Y&mapinfoYN=Y&contentId=" +
           contentId;
@@ -201,6 +199,7 @@
         let map = new kakao.maps.Map(container, options); // 지도객체 생성 및 그려지기
       }
 
+      //추가 이미지 //이미지 정보조회
       function addImage(contentId) {
         let addImageUrl =
           "https://apis.data.go.kr/B551011/KorService/detailImage?MobileOS=ETC&MobileApp=AppTest&serviceKey=6J5Zx65Dwh579pVoIqafwQGnNO7bREwHXMCXJx8PqVRBfDl2OfHSbETSKxXYV5qCS0fQT2uD0VNYfKgYPJnwWQ%3D%3D&_type=json&imageYN=Y&subImageYN=Y&contentId=" +
