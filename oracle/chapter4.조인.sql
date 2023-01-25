@@ -61,6 +61,7 @@ where e.sal between s.losal and s.hisal;
 select e.first_name, d.department_name
 from employees e, departments d
 where e.department_id = d.department_id;
+
 --위의 결과에서 178번 사원이 부서번호가 null이라 누락 되어 있다.
 -- outer join을 사용하여 누락된 정보까지 표현해보자.
 -- 누락된 정보는 표현하라는 의미에서 !!반대쪽!! 컬럼명뒤에 (+) 기호를 붙여준다.
