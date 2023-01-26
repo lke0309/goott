@@ -168,10 +168,11 @@ drop table dept01;
 --제약조건 이름의 예
 --[테이블명]_[컬럼명]_[제약조건명]
 
+--컬럼 레벨 명시 방법?
 --제약조건 이름을 명시하는 방법
 --컬럼명 데이터 타입 constaint 제약조건이름 제약조건타입
 
-create table dept01(
+create table dept01( --컬럼레벨 기술 방법
 deptno number(2)  constraint dept01_deptno_pk primary key,
 dname varchar2(10) constraint dept01_dname_nn not null,
 loc varchar2(20) default 'seoul');
@@ -187,11 +188,124 @@ deptno number(2) constraint emp01_deptno_fk references dept01(deptno));
 insert into dept01 values(10, '총무부' ,'부산');
 
 
+------------------------------------------------------------------------------------------------------------
+drop table emp01;
+drop table dept01;
 
 
+create table dept01
+(
+deptno number(4),
+dname nvarchar2(20),
+loc nvarchar2(10),
+constraint dept01_deptno_pk primary key(deptno),
+constraint dept01_dname_uq unique(dname));
+
+create table emp01(
+empno number(4),
+ename varchar2(20) constraint emp01_ename_nn not null,
+salary number(5),
+deptno number(4),
+constraint emp01_empno_pk primary key(empno),
+constraint emp01_sal_ck check(salary > 0),
+constraint emp01_deptno_fk foreign key(deptno) references dept01(deptno));
+
+insert into dept01(dname, deptno) values('총무부', 10);
+insert into dept01(dname, deptno) values('개발부', 50);
+
+select * from dept01;
+
+insert into emp01 values(100, '홍길동', 5000, 50);
+insert into emp01 values(200, '둘리', 3000, 10);
+
+---------------------------------------------------------------------------------------------
+--복합키
+
+create table member(
+email varchar2(40),
+password varchar2(15) constraint member_password_nn not null,
+name nvarchar2(12) constraint memver_name_nn not null,
+mobile char(13),
+addr nvarchar2(50),
+constraint member_combo_pk primary key(email, mobile)); --and 조건  둘다 같으면 안됨
+
+insert into member values('a@a.com', '1234', '홍길동', '010-1234-5678', null);
+insert into member values('a@a.com', '1234', '홍길순', '010-3333-5678', null);
+--아래는 제약조건 위반(이메일과 전화번호가 unique 하지 않음)
+insert into member values('a@a.com', '1234', '홍길길', '010-3333-5678', null);
+insert into member values('dooly@dolly.com', '1234', '둘리', '010-5555-6666', null);
 
 
+select * from member;
 
 
+--로그인 처리
+select * from member where email = '유저가 입력한 이메일' and mobile ='유저가 입력한 모바일' and password='유저가 입력한 비번';
+select * from member where email = 'a@a.com' and mobile ='010-3333-5678' and password='1234';
 
 
+alter table member
+add gender char(3); --한글 한글자가 3byte--남과 여 중 한글자만 오기 때문
+
+alter table member
+add constraint member_gender_ck check(gender in ('남','여'));
+
+
+--addr컬럼에 not null제약 조건을 걸어보자 먼저 업데이트부터
+update member set addr = '우리나라 어딘가에';
+
+
+--addr컬럼에 not null제약 조건을 걸어보자
+alter table member
+modify addr constraint member_addr_nn not null;
+
+--제약조건 제거하기
+alter table member
+drop constraint member_addr_nn;
+
+
+--제약조건 일시적 비활성화
+alter table member
+disable constraint member_name_nn;
+
+insert into member values('www@www.com', '4234', 'null', '010-0000-0000', null, '남'); 
+
+--비활성화 된것 다시 살리기
+alter table member
+enable constraint member_name_nn; --다시 활성화를 시키면 위에서 name을 null로 만들었기 때문에 에러가남.
+--그래서 아래에서 처럼 업데이트로 name에 다시 값을 넣어주어야함.
+
+update member set name ='웹' where email ='www@www.com';
+
+drop table member;
+
+---------------------------------------------------------------------------
+create table member(
+userid varchar2(12),
+pwd varchar2(15) constraint member_pwd_nn not null,
+constraint member_userid_pk primary key(userid));
+
+insert into member values ('abcd1223', '12345');
+insert into member values ('dooly', '3345');
+
+select * from member;
+
+create table board(
+no number(10),
+writer varchar2(12),
+title varchar2(40),
+constraint board_no_pk primary key(no),
+constraint board_writer_fk foreign key(writer) references member(userid) on delete set null );
+--on delete cascade: 둘리가 쓴글이 다 삭제됨 (cascade: 연쇄적) 즉 연쇄적으로 삭제해라
+--on delete set null: 둘리만 null 처리되고 둘리가 쓴글은 남아 있음.
+
+insert into board values(1, 'dooly', '첫번째 글');
+insert into board values(2, 'abcd1223', '두번째 글');
+insert into board values(3, 'dooly', '세번째 글');
+
+select * from board order by no desc;
+
+delete from member where userid='dooly'; --둘리가 쓴글이 다 삭제됨.
+
+drop table board;
+drop table member;
