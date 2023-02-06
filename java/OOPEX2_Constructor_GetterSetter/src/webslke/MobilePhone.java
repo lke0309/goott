@@ -2,9 +2,9 @@ package webslke;
 
 public class MobilePhone {
 	//속성(멤버 변수는 초기화를 안하면 자동 초기화 된다 String은 null로 , int는 0으로)
-	String brandName;
-	String modelName;
-	int mainMemory;
+	private String brandName;
+	private String modelName;
+	private int mainMemory;
 	
 	//생성자와 메서드 차이 알기 ! 비슷하게 생김.
 	
@@ -43,6 +43,52 @@ public class MobilePhone {
 	
 	
 	//메서드
+	
+	//getter
+	String getBrandName() {// 카멜기법 사용!
+		return this.brandName; //다른 곳에서 호출 할 수 있도록 brandName값 반환
+	}
+	String getModelName() {
+		return this.modelName; //다른 곳에서 호출 할 수 있도록 brandName값 반환
+	}
+//	int getMainMemory() {
+//		return this.mainMemory ;
+//	}
+//	
+	String getMainMemory() {
+		return this.mainMemory + "Gigabyte";
+	}
+	
+	
+	//setter : 값변경
+	void setBrandName(String brandName) {
+		//멤버변수 = 지역변수;
+		this.brandName = brandName;
+	}
+	void setModelName(String modelName) {
+		//멤버변수 = 지역변수;
+		this.modelName = modelName;
+	}
+	
+//	void setMainMemory(String mainMemory) {
+//		//멤버변수 = 지역변수;
+//		this.mainMemory = mainMemory;
+//	}
+	
+	boolean setMainMemory(int mainMemory) {
+		//메인 메모리의 용량을 1tb까지만 허용한다면 이렇게 setter를 구현 할 수 도 있다.
+		boolean result = false;
+		if (mainMemory <= 1024) {
+			//멤버변수 = 지역변수;
+			this.mainMemory = mainMemory;
+			result = true;
+		}
+		return  result;
+	
+	}
+
+	
+	
 	public String toString() {
 		//getClass() : 현재객체(클래스)를 가져와라
 		//getName(): 이름을 가져와라
