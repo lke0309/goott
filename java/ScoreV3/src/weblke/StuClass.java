@@ -79,7 +79,7 @@ public class StuClass {
 	
 	
 
-	//학번으로 해당 학번의 학생 성적 
+	//학번으로 해당 학번의 학생 성적 //default
 	void findStudentByNo(String stuNo) {
 		boolean isFind = false;
 //		stuNo학번을 가진 학생을 this.stuList(배열)에서 검색
