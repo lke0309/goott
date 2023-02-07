@@ -6,7 +6,7 @@ public class FishBread {
 	private int fishLength;
 	
 
-	//생성자	
+	//생성자: 객체가 생성될때 할일	
 	public FishBread(String fishInner, int fishLength ) {
 		this.fishInner = fishInner;
 		this.fishLength = fishLength;

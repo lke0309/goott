@@ -10,6 +10,7 @@ public class ScoreV2 {
 		System.out.println(s2.toString());
 		
 	
+	
 		
 		System.out.println(s1.getGrade()); //s1의 등급만 출력
 		s1.setKor(120);// 국어점수 100점이 넘어가서 못고침

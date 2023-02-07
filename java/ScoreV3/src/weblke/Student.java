@@ -36,7 +36,7 @@ public class Student {
 	}
 	
 
-	// bean // VO(value object): 멤버변수 , 생성자 , getter, setter, toString
+	// bin??: 멤버변수 , 생성자 , getter, setter, toString
 	
 	//getter : source 메뉴에서 제너레이트 getter and  setter 로 생성함.
 	public String getStuNo() {
