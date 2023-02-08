@@ -75,7 +75,7 @@ public class ScoreV3 {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //메인 함수 먼저 실행 // 멤버 메서드
 		ScoreV3 sc = new ScoreV3();
 		StuClass stuClass = null;
 		while (true) {

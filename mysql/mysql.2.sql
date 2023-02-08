@@ -24,3 +24,31 @@ truncate table rent; -- 데이터 행 지우기
 commit;
 
 
+------------------------------------------------
+-- DELIMITER $$
+-- create trigger trg_removeMemberAuto
+-- after delete
+-- on userAddress
+-- for each row
+-- begin
+-- 	insert into removeUser( removeId, removeName) values (old.id, old.name, now())
+-- end $$
+-- delimiter;
+
+
+
+-- delete from userAddress where id = 'abc123';
+-- select * from remover
+
+
+-- delimiter $$
+-- create trigger trg_autoSell
+-- after insert
+-- on Sell
+-- for each row
+-- Begin
+-- update Stock set
+
+
+-------------------------------------------------------------
+

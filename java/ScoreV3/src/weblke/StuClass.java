@@ -18,6 +18,7 @@ public class StuClass {
 		//명 수가 먼저 선언되어야 하기 때문에 위에서 STUDENT_COUNT를 상수처리 해준 것이다.( 실행 시 가장 먼저 초기화 )
 	}
 	
+	// auto로 생성하는 애를 위한 생성자
 	public StuClass(int no, String className, Student[] stuList) {
 		this.no =no;
 		this.className =className;
