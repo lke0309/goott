@@ -4,12 +4,12 @@ SELECT * FROM gottclass6.member; -- 회원
 SELECT * FROM gottclass6.video; -- 비디오
 
 -- 회원 CRUD
-insert into gottclass6.member(USER_NAME, PHONE_NUM, BIRTHDAY, GENDER, OVERDUE, ADDR)
-values('이상진상', '010-0707-0707', '1994-07-07', 'male', '30', '서울시 구로구 구로동'); -- 생성
+insert into gottclass6.member(USER_NAME, PHONE_NUM, BIRTHDAY, GENDER,  ADDR)
+values('이상진상', '010-0707-0707', '1994-07-07', 'male',  '서울시 구로구 구로동'); -- 생성
 
-select USER_NAME, BIRTHDAY from member where user_name = '이상진상'; -- 조회
+select user_num, USER_NAME, BIRTHDAY, GENDER from member where user_name = '이상진상'; -- 조회
 
-update member set overdue = 120 where user_num = 49 ; -- 수정
+update member set GENDER = 'female' where user_num = 53 ; -- 수정
 
 delete from member where user_name = '이상진상'; -- 삭제
 
@@ -40,32 +40,26 @@ delete from genre where GENRE_CODE = 'Gore';
 
 
 -- 대여기록 CRUD
-insert into gottclass6.rent( USER_NUM, VIDEO_CODE, GENRE_CODE, RENTDATE, RETURN_DUE_DATE, RETURN_DATE) 
-values ('8', 'AN20203335' , 'Animation' , now(), date_add(now(), interval + 3 day), date_add(now(), interval + 2 day)); -- 생성
+insert into gottclass6.rent( USER_NUM, VIDEO_CODE, GENRE_CODE, RENTDATE, ISRETURN, RETURN_DUE_DATE) 
+values ('7', 'AN19883333' , 'Animation' , now(), 'N', date_add(now(), interval + 3 day)); -- 생성
 
-select user_num, ISRETURN from rent where VIDEO_CODE= 'AN20203335'; -- 조회
+select user_num, ISRETURN from rent where VIDEO_CODE= 'AN19883333'; -- 조회
 
-update rent set user_num = 10 where num = 20; -- 수정
+update rent set user_num = 10 where num = 78; -- 수정
 
-DELETE FROM rent WHERE NUM = 35 ; -- 삭제
-
-
-
-
+DELETE FROM rent WHERE NUM = 78 ; -- 삭제
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
--- 블랙리스트 조회
-select user_name, phone_num from member where chk_black = 'Y';
-
 -- 인기목록 조회
 -- select VIDEO_CODE, GENRE_CODE from rent where ;
 
 -- 매출확인
+-- rent 의 num
+select count(num) from rent ;
+
 -- 연체관리
 
 -- 회원 나이별 선호장르
