@@ -6,7 +6,7 @@ public abstract class Shape { //하나라도 추상메서드가 있으면 추상
 	
 	// 추상클래스가 되는 조건
 	// 1) class 키워드 앞에 abstract 키워드를 붙인다. (추상 메서드가 없어도 추상 클래스로 만들어짐)
-	// 2) 클래스의 멤버 메서드 중 하나라도 추상 메서드가 있다면 자동으로 추상 클래스가 되어야 한다.
+	// 2) 클래스의 멤버 메서드 중 하나라도 추상 메서드가 있다면 자동으로 추상 클래스가 되어야 한다.(객체가 필요없는 클래스), 주로 설계할 때 사용됨
 	
 	//객체가 아닌 클래스가 왜 필요한가?? 설계 할 때 필요하다.
 	private String name;
@@ -53,5 +53,29 @@ public abstract class Shape { //하나라도 추상메서드가 있으면 추상
 	//추상 메서드: 바디가 없는 메서드
 	//언젠가는 구현이 되어야 함.(자식 클래스에서 명확해지면 구현을 해야함!)
 	//void draw (매개변수 없는 상태) - 이렇게 만들어야 모든 사람이 각자의 스타일로 만들어도 받아 올 수 있다.??
-	public abstract void draw(Graphics g); //바디가 없다. //규칙! 추상메서드는 꼭! 추상 클래스 안에 있어야 한다.
+	public abstract void draw(); //바디가 없다. //규칙! 추상메서드는 꼭! 추상 클래스 안에 있어야 한다.
+	
+	
+	
+//	public String toString() { //부모인 Object에게 상속받은 toString()
+//		
+//	}
+	
+	
+//	//아래의 메서드는 오버로딩이다. 부모가 물려준 toString()을 오버로딩 한것, 그래서 에러가 없다.
+	public String toString(int a) {
+		return "";
+	}
+	
+	//아래의 메서드는 오버로딩이다. 부모가 물려준 toString()을 오버로딩 한것, 그래서 에러가 없다.
+	protected String toString(String a) {
+		return a;
+		
+	}
+	
+	@Override //아래의 메서드가 오버라이딩 됨을 컴파일에게 명
+	public String toString() {
+		return "Shape[name =" + name + ",color="+ color + ", p=" + p +"]";
+		
+	}
 }

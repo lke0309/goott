@@ -12,6 +12,13 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
+	
+	
+	Point(Point p){//생성자: 객체를 만들면서 멤버변수를 초기화하는 것
+		//p라는 원점을 복사한 것
+		this.x = p.getX();
+		this.y = p.getY();
+	}
 
 	public int getX() {
 		return x;
